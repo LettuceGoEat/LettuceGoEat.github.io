@@ -1,0 +1,60 @@
+#Android{
+    position: absolute;
+    width: 360px;
+    height: 640px;
+    left: 0px;
+    top: 0px;
+
+    background: #FFFFFF;
+}
+
+#Password{
+    position: absolute;
+    width: 210px;
+    height: 81px;
+    left: 77px;
+    top: 369px;
+}
+
+#pass{
+
+    position: absolute;
+    width: 112px;
+    height: 29px;
+    left: 90px;
+    top: 369px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #000000;
+}
+
+line#{
+    position: absolute;
+    width: 179px;
+    height: 43px;
+    left: 93px;
+    top: 402px;
+}
+.rectangle {
+  position: absolute;
+    width: 210px;
+    height: 52px;
+    left: 77px;
+    top: 398px;
+
+    background: #B8EA91;
+    border-radius: 10px;
+}
+.line {
+    style="border-bottom: 1px solid black;"
+    position: absolute;
+    width: 179px;
+    height: 43px;
+    left: 93px;
+    top: 402px;
+}
