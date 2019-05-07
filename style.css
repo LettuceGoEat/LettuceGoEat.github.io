@@ -1,48 +1,20 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background: url("background.png") no-repeat top left;
+}
+
 /* Frame */
-#Frame{
-    position: fixed;
-    width: 360px;
-    height: 640px;
-
+.container{
 
 }
-
-
-
-
-/* Android */
-#Android{
-    position: fixed;
-    width: 360px;
-    height: 640px;
-    left: 0px;
-    top: 0px;
-
-    background: url("background.svg");
-}
-
-
-
-/* background */
-#background{
-    position: fixed;
-    width: 360px;
-    height: 599px;
-    left: 0px;
-    top: 102px;
-}
-
-
 
 
 
 /* Button_Signup */
-#Button_Signup{
-    position: fixed;
-    width: 156px;
-    height: 68px;
-    left: 105px;
-    top: 558px;
+#button_signup{
+
 }
 
 
@@ -50,11 +22,6 @@
 
 /* signupRect */
 #signupRect{
-    position: fixed;
-    width: 156px;
-    height: 68px;
-    left: 105px;
-    top: 558px;
 
     background: #B8EA91;
     box-shadow: 0px 4px 10px #000000;
@@ -65,11 +32,6 @@
 
 /* signupText */
 #signupText{
-    position: fixed;
-    width: 111px;
-    height: 43px;
-    left: 127px;
-    top: 570px;
 
     font-family: Roboto;
     font-style: normal;
@@ -85,12 +47,8 @@
 
 
 /* Button_Login */
-#Button_Login{
-    position: fixed;
-    width: 156px;
-    height: 68px;
-    left: 105px;
-    top: 479px;
+#button_login{
+
 }
 
 
@@ -98,11 +56,6 @@
 
 /* loginRect */
 #loginRect{
-    position: fixed;
-    width: 156px;
-    height: 68px;
-    left: 105px;
-    top: 479px;
 
     background: #B8EA91;
     box-shadow: 0px 4px 10px #000000;
@@ -113,11 +66,6 @@
 
 /* loginText */
 #loginText{
-    position: fixed;
-    width: 89px;
-    height: 43px;
-    left: 139px;
-    top: 491px;
 
     font-family: Roboto;
     font-style: normal;
@@ -133,12 +81,8 @@
 
 
 /* Password */
-#Password{
-    position: fixed;
-    width: 210px;
-    height: 81px;
-    left: 77px;
-    top: 369px;
+#password{
+
 }
 
 
@@ -146,11 +90,6 @@
 
 /* passInput */
 #passInput{
-    position: fixed;
-    width: 179px;
-    height: 43px;
-    left: 93px;
-    top: 402px;
 
     font-family: Roboto;
     font-style: normal;
@@ -167,11 +106,6 @@
 
 /* pass */
 #pass{
-    position: fixed;
-    width: 112px;
-    height: 29px;
-    left: 90px;
-    top: 369px;
 
     font-family: Roboto;
     font-style: normal;
@@ -188,11 +122,6 @@
 
 /* passRect */
 #passRect{
-    position: fixed;
-    width: 210px;
-    height: 52px;
-    left: 77px;
-    top: 398px;
 
     background: #B8EA91;
     border-radius: 10px;
@@ -201,12 +130,8 @@
 
 
 /* Username */
-#Username{
-    position: fixed;
-    width: 210px;
-    height: 81px;
-    left: 77px;
-    top: 276px;
+#username{
+
 }
 
 
@@ -214,11 +139,6 @@
 
 /* usernameInput */
 #usernameInput{
-    position: fixed;
-    width: 179px;
-    height: 43px;
-    left: 93px;
-    top: 309px;
 
     font-family: Roboto;
     font-style: normal;
@@ -235,11 +155,6 @@
 
 /* username */
 #username{
-    position: fixed;
-    width: 115px;
-    height: 29px;
-    left: 90px;
-    top: 276px;
 
     font-family: Roboto;
     font-style: normal;
@@ -256,11 +171,6 @@
 
 /* usernameRect */
 #usernameRect{
-    position: fixed;
-    width: 210px;
-    height: 52px;
-    left: 77px;
-    top: 305px;
 
     background: #B8EA91;
     border-radius: 10px;

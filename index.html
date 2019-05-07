@@ -3,40 +3,43 @@
 <head>
 <title>Lettuce Go Eat</title>
 <link rel="stylesheet" href="style.css">
+<link src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-<span id=Frame>
+<div class="container" id="frame">
+  <div class="row" id ="password">
+    <div class="col-sm">
+        <span id="passRect"></span>
+        <span id="passInput"></span>
+        <span id="pass"><b>Password</b></span>
+    </div>
+  </div>
 
-    <span id="Android">
+ <div class="row" id ="username">
+    <div class="col-sm">
+        <span id="usernameRect"></span>
+        <span id="usernameInput"></span>
+        <span id="username"><b>Username</b></span>
+    </div>
+  </div>
 
-        <span id ="Password">
-            <span id="passRect"></span>
-            <span id="passInput"></span>
-            <span id="pass"><b>Password</b></span>
-        </span>
+  <div class="row" id ="button_login">
+    <div class="col-sm">
+        <span id="loginRect"></span>
+        <span id="loginText"><b>Login</b></span>
+    </div>
+  </div>
 
-        <span id ="Username">
-            <span id="usernameRect"></span>
-            <span id="usernameInput"></span>
-            <span id="username"><b>Username</b></span>
-        </span>
-
-        <span id ="Button_Login">
-            <span id="loginRect"></span>
-            <span id="loginText"><b>Login</b></span>
-
-        </span>
-
-        <span id ="Button_Signup">
-            <span id="signupRect"></span>
-            <span id="signupText"><b>Sign Up</b></span>
-        </span>
-
-
-    </span>
-
-</span>
+  <div class="row" id ="button_signup">
+    <div class="col-sm">
+        <span id="signupRect"></span>
+        <span id="signupText"><b>Sign Up</b></span>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
