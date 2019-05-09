@@ -1,18 +1,27 @@
-#title{
-    font-family:lato;
+.title{
     font-size: 24px;
     padding: 20px;
 }
 
+html, body {
+  height: 100%;
+}
+
+.min-100 {
+    min-height: 100%;
+}
+
 .dinner{
-    font-family:lato;
     font-size: 18px;
     padding: :15px;
 
 }
 
+.row {
+  height: 6%;
+}
 .schedule{
-
+    height: 100%;
     text-align: center;
 }
 
@@ -23,4 +32,24 @@
     border-width: 2px;
 }
 
+.rectangle{
+  border: none;
+}
 
+.rightRect{
+   background-image: linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
+    background-image: -webkit-linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
+}
+
+.leftRect{
+    background-image: linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
+    background-image: -webkit-linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
+
+}
+.infoRow{
+    height: 42%;
+}
+.info{
+    background-color: red;
+
+}
