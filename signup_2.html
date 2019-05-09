@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lettuce Go Eat</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="base.css">
+	</head>
+	<body>
+		<section>
+			<div class="container" class="center">
+				<div class="row">
+					<div id="username">What can you eat? </div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						Fish
+					</div>
+					<div class="col-sm">
+						<label class="switch">
+							<input name="fish" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						Dairy
+					</div>
+					<div class="col-sm">
+						<label class="switch">
+							<input name="dairy" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						Eggs
+					</div>
+					<div class="col-sm">
+						<label class="switch">
+							<input name="egg" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						Chicken
+					</div>
+					<div class="col-sm">
+						<label class="switch">
+							<input name="chicken" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						Animal-derived products
+					</div>
+					<div class="col-sm">
+						<label class="switch">
+							<input name="animalProducts" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						All
+					</div>
+					<div class="col-sm">
+						<label class="switch">
+							<input name="name" type="checkbox" onchange="selectAll()">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+
+				<div class="row" >
+					<button id="next">Next</button>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
