@@ -52,7 +52,7 @@ function failLogin(reason) {
 function login(username) {
 
 	//add cookie
-	var cookie = "path=/;" + "username=" + username
+	var cookie = "username=" + username
 	console.log(cookie)
 	document.cookie = cookie;
 
