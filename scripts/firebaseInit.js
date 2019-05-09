@@ -9,3 +9,9 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  const failReason = {
+    USERNAME: 0,
+    PASSWORD: 1,
+    INCORRECT: 2
+  }

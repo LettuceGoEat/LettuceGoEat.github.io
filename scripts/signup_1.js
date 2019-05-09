@@ -1,24 +1,27 @@
 $(document).ready(function() {
 
-	$("#login").click(() => {
+	$("#next").click(() => {
 		var username = $("input[name='username']").val()
 		var password = $("input[name='password']").val()
 
 		if (username.length == 0) {
-			failLogin(failReason.USERNAME)
+			fail(failReason.USERNAME)
 		} else if (password.length == 0) {
-			failLogin(failReason.PASSWORD)
+			fail(failReason.PASSWORD)
 		} else {
 
 			firebase.database().ref('/users/').orderByChild('username').equalTo(username).once("value", (snapshot) => {
 				var obj = snapshot.val()
-				//not secure but this isn't the point of this project
-				var key = Object.keys(obj)[0]
-				var user = obj[key]
-				if (user.password == password) {
-					login(user)
-				} else {
-					failLogin(failReason.INCORRECT)
+				if(obj != null){
+					fail(failReason.INCORRECT)
+				} else{
+					user = {
+						username: username,
+						password: password
+					}
+					var newKey = firebase.database().ref('/users/').push()
+					newKey.set(user)
+					next(user)
 				}
 			})
 		}
@@ -26,14 +29,14 @@ $(document).ready(function() {
 
 });
 
-function failLogin(reason) {
+function fail(reason) {
 	switch (reason) {
 		case failReason.USERNAME:
-			console.log("username");
+			console.og("username");
 			break;
 		case failReason.PASSWORD:
 			console.log("password");
-			break;
+			break;l
 		case failReason.INCORRECT:
 			console.log("incorrect");
 			break;
@@ -43,11 +46,11 @@ function failLogin(reason) {
 	}
 }
 
-function login(user) {
+function next(user) {
 
 	//add cookie
 	Cookies.set("user", user)
 
 	//change to first page (schedule page)
-	window.location.href = "schedule.html"
+	window.location.href = "signup_2.html";
 }

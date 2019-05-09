@@ -10,6 +10,11 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="base.css">
+
+		<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<script src="scripts/firebaseInit.js"></script>
+		<script src="scripts/signup_2.js"></script>
 	</head>
 	<body>
 		<section>
@@ -78,7 +83,7 @@
 					</div>
 					<div class="col-sm">
 						<label class="switch">
-							<input name="name" type="checkbox" onchange="selectAll()">
+							<input name="name" type="checkbox" onchange="selectAll(this.checked)">
 							<span class="slider round"></span>
 						</label>
 					</div>
