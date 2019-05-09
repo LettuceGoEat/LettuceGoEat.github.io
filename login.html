@@ -10,6 +10,9 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="base.css">
+
+		<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+		<script src="scripts/firebaseInit.js"></script>
 		<script src="scripts/login.js"></script>
 	</head>
 	<body>
@@ -27,13 +30,13 @@
 					<div>Password: </div>
 				</div>
 				<div class="row">
-					<input class="interface" type="text" name="password">
+					<input class="interface" type="password" name="password">
 				</div>
 				<div class="row">
-					<button>Login</button>
+					<button id="login">Login</button>
 				</div>
 				<div class="row">
-					<button>Sign Up</button>
+					<button id="signup">Sign Up</button>
 				</div>
 			</div>
 		</section>
