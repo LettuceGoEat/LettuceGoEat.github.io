@@ -1,13 +1,14 @@
-html {
+html, body {
   height: 100%;
 }
 
 body{
-    min-height: 100%;
-    width: 100%;
-    background-size: auto;
-    background: url("background.png") no-repeat top left;
+    background-image: linear-gradient(to bottom, #43e97b 0%, #38f9d7 100%);
 }
+
+.skewed-bg{
+}
+
 
 /* Frame */
 .container{
@@ -187,3 +188,19 @@ body{
 
 
 
+
+
+svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ssvg {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
