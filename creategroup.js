@@ -99,9 +99,9 @@ next.onclick = function(){
 	else{
 		var user = Cookies.getJSON("user")
 		var newKey = firebase.database().ref('groups').push();
-		newKey.child('title').set(title.value);
-		newKey.child('week').set(week);
-		newKey.child('time').set(time);
+		newKey.child('name').set(title.value);
+		newKey.child('day').set(week);
+		newKey.child('dinner').set(time);
 		newKey.child('mylocation').set(mylocation.value);
 		newKey.child('groupsize').set(groupsize.value);
 		newKey.child('members').child('mem1').set(user.key)
