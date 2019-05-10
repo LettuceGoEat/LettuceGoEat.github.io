@@ -27,7 +27,8 @@ $(document).ready(function() {
 				var user = obj[key]
 				user.food = selected
 				var newKey = firebase.database().ref('/users/').child(key).set(user)
-				next(user)
+				next({user: user,
+					key: key})
 			}
 		})
 	})

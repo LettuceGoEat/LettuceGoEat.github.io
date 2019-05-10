@@ -17,7 +17,8 @@ $(document).ready(function() {
 					var key = Object.keys(obj)[0]
 					var user = obj[key]
 					if (user.password == password) {
-						login(user)
+						login({user: user,
+							key: key})
 					} else {
 						failLogin(failReason.INCORRECT)
 					}

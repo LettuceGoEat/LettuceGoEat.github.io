@@ -13,14 +13,15 @@ $(document).ready(function() {
 			firebase.database().ref('/users/').orderByChild('username').equalTo(username).once("value", (snapshot) => {
 				var obj = snapshot.val()
 				if(obj != null){
-					fail(failReason.INCORRECT)
+					fail(failReason.USERNAME)
 				} else{
 					user = {
 						username: username,
 						password: password
 					}
 					var newKey = firebase.database().ref('/users/').push()
-					newKey.set(user)
+					newKey.set({user: user,
+						key: key})
 					next(user)
 				}
 			})
