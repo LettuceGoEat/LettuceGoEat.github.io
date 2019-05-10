@@ -1,9 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="scripts/firebaseInit.js"></script>
 	<link rel="stylesheet" href="findgroup.css">
 </head>
 <body>
@@ -17,50 +26,10 @@
 			<td id='position'>Daejeon</td>
 		</tr>
 	</table>
-	<table id='content'>
-		<tr>
-			<td id='contenttitle' colspan="4">Monday</td>
-		</tr>
-		<tr>
-			<td id='contentintext' colspan="4">Come check out new Vegetarian</td>
-		</tr>
-		<tr>
-			<td id='contentmeal'>Lunch</td>
-			<td id='contentpeople'>5/6</td>
-			<td id='contentintext'>Vegetarian</td>
-			<td id='contentmore'>...</td>
-		</tr>
-	</table>
-	<table id='content'>
-		<tr>
-			<td id='contenttitle' colspan="4">Wednesday</td>
-		</tr>
-		<tr>
-			<td id='contentintext' colspan="4">Vegan? Come eat with me</td>
-		</tr>
-		<tr>
-			<td id='contentmeal'>Dinner</td>
-			<td id='contentpeople'>4/4</td>
-			<td id='contentintext'>Vegan</td>
-			<td id='contentmore'>...</td>
-		</tr>
-	</table>
-	<table id='content'>
-		<tr>
-			<td id='contenttitle' colspan="4">Friday</td>
-		</tr>
-		<tr>
-			<td id='contentintext' colspan="4">Come eat here!</td>
-		</tr>
-		<tr>
-			<td id='contentmeal'>Lunch</td>
-			<td id='contentpeople'>3/4</td>
-			<td id='contentintext'>Pesco</td>
-			<td id='contentmore'>...</td>
-		</tr>
-	</table>
+	<div id='tableappend'></div>
+	
 
 
-
+	<script src="findgroup.js"></script>
 </body>
 </html>
