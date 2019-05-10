@@ -37,6 +37,6 @@ $(document).ready(function() {
   let viewheight = $(window).height();
   let viewwidth = $(window).width();
   let viewport = document.querySelector("meta[name=viewport]");
-  viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0," + "maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui");
+  viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=0.4," + "maximum-scale=0.4, minimum-scale=0.4, user-scalable=no, minimal-ui");
 
 });
