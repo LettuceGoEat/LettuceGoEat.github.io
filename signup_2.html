@@ -10,87 +10,94 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+		<link rel="stylesheet" href="css/login.css">
 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 		<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 		<script src="scripts/firebaseInit.js"></script>
 		<script src="scripts/signup_2.js"></script>
 	</head>
 	<body>
+
 		<section>
 			<div class="container" class="center">
-				<div class="row">
+				<div class="row justify-content-center">
 					<div id="username">What can you eat? </div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
+				<div class="row choice justify-content-center">
+					<div class="col-sm label">
 						Fish
 					</div>
-					<div class="col-sm">
+					<div class="col-sm align-self-center">
 						<label class="switch">
 							<input name="fish" type="checkbox">
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
+				<div class="row" style="height:1vh"></div>
+				<div class="row choice justify-content-center">
+					<div class="col-sm label">
 						Dairy
 					</div>
-					<div class="col-sm">
+					<div class="col-sm align-self-center">
 						<label class="switch">
 							<input name="dairy" type="checkbox">
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
+				<div class="row" style="height:1vh"></div>
+				<div class="row choice justify-content-center">
+					<div class="col-sm label">
 						Eggs
 					</div>
-					<div class="col-sm">
+					<div class="col-sm align-self-center">
 						<label class="switch">
 							<input name="egg" type="checkbox">
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
+				<div class="row" style="height:1vh"></div>
+				<div class="row choice justify-content-center">
+					<div class="col-sm label">
 						Chicken
 					</div>
-					<div class="col-sm">
+					<div class="col-sm align-self-center">
 						<label class="switch">
 							<input name="chicken" type="checkbox">
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
+				<div class="row" style="height:1vh"></div>
+				<div class="row choice justify-content-center" style="height:16vh">
+					<div class="col-sm label">
 						Animal-derived products
 					</div>
-					<div class="col-sm">
+					<div class="col-sm align-self-center">
 						<label class="switch">
 							<input name="animalProducts" type="checkbox">
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
+				<div class="row" style="height:1vh"></div>
+				<div class="row choice justify-content-center">
+					<div class="col-sm label">
 						All
 					</div>
-					<div class="col-sm">
+					<div class="col-sm align-self-center">
 						<label class="switch">
 							<input name="name" type="checkbox" onchange="selectAll(this.checked)">
 							<span class="slider round"></span>
 						</label>
 					</div>
 				</div>
-
-				<div class="row" >
+				<div class="row" style="height:3vh"></div>
+				<div class="row justify-content-end" >
 					<button id="next">Next</button>
 				</div>
 			</div>
