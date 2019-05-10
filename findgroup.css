@@ -1,17 +1,16 @@
-﻿body
+body
 {
 }
 #title{
 	margin : auto;
 	background : #0D73D8;
-	border : 1px solid #0D73D8;
 	border-radius : 10px;
 }
 #vege{
 	color : #57FB04;
 }
 #position{
-	color : #1601FD
+	color : blue
 }
 #content{
 	margin : auto;
@@ -41,6 +40,11 @@
 	border : 1px solid black;
 }
 #contentintext{
+	background : #B5FD69;
+	border-collapse : collapse;
+	border : 1px solid black;
+}
+#contentc{
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
