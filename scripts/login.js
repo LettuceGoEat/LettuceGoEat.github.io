@@ -13,6 +13,7 @@ $(document).ready(function() {
 			firebase.database().ref('/users/').orderByChild('username').equalTo(username).once("value", (snapshot) => {
 				var obj = snapshot.val()
 				//not secure but this isn't the point of this project
+				console.log(obj)
 				if(obj != null){
 					var key = Object.keys(obj)[0]
 					var user = obj[key]

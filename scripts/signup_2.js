@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 	//if there are already selections show them
-	var user = Cookies.getJSON('user')
-	if(user != null && user.food != null){
+	var acc = Cookies.getJSON('account')
+	if(acc != null && acc.user != null && acc.user.food != null){
 		$('input[type=checkbox]').each(function(k, v) {
-			$(this).prop('checked', user.food[v.name])
+			$(this).prop('checked', acc.user.food[v.name])
 		})
 	}
 
