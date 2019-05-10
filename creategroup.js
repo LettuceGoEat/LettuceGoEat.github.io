@@ -22,8 +22,8 @@ var next = document.getElementById('next')
 var title = document.getElementById('title')
 var mylocation = document.getElementById('location')
 var groupsize = document.getElementById('groupsize')
-var week = "";
-var time = "";
+var week = 7;
+var time = 2;
 function weekgray(){
 	sun.style.color = 'gray';
 	mon.style.color = 'gray';
@@ -36,57 +36,57 @@ function weekgray(){
 sun.onclick = function(){
 	weekgray();
 	sun.style.color = 'black';
-	week = "sunday";
+	week = 0;
 }
 mon.onclick = function(){
 	weekgray();
 	mon.style.color = 'black';
-	week = "monday";
+	week = 1;
 }
 tue.onclick = function(){
 	weekgray();
 	tue.style.color = 'black';
-	week = "tuesday";
+	week = 2;
 }
 wed.onclick = function(){
 	weekgray();
 	wed.style.color = 'black';
-	week = "wednesday";
+	week = 3;
 }
 thu.onclick = function(){
 	weekgray();
 	thu.style.color = 'black';
-	week = "thursday";
+	week = 4;
 }
 fri.onclick = function(){
 	weekgray();
 	fri.style.color = 'black';
-	week = "friday";
+	week = 5;
 }
 sat.onclick = function(){
 	weekgray();
 	sat.style.color = 'black';
-	week = "saturday";
+	week = 6;
 }
 lunch.onclick = function(){
 	lunch.style.color = 'black';
 	dinner.style.color = 'gray';
-	time = "lunch";
+	time = 0;
 }
 dinner.onclick = function(){
 	lunch.style.color = 'gray';
 	dinner.style.color = 'black';
-	time = "dinner";
+	time = 1;
 }
 
 next.onclick = function(){
 	if(title.value==""){
 		alert("please fillin title")
 	}
-	else if(week==""){
+	else if(week==7){
 		alert("please select Date")
 	}
-	else if(time==""){
+	else if(time==2){
 		alert("please select time")
 	}
 	
