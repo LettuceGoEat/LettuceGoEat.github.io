@@ -54,7 +54,7 @@ function fail(reason) {
 function next(user) {
 
 	//add cookie
-	Cookies.set("user", user)
+	Cookies.set("account", user)
 
 	//change to first page (schedule page)
 	window.location.href = "signup_2.html";

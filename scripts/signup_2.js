@@ -17,7 +17,7 @@ $(document).ready(function() {
 		});
 		selected.pop();	//don't need value for all
 
-		var username = Cookies.getJSON("user").username
+		var username = Cookies.getJSON("account").user.username
 		firebase.database().ref('/users/').orderByChild('username').equalTo(username).once("value", (snapshot) => {
 			var obj = snapshot.val()
 			if(obj == null){
@@ -56,7 +56,7 @@ function fail(reason) {
 function next(user) {
 
 	//add cookie
-	Cookies.set("user", user)
+	Cookies.set("account", user)
 
 	//change to first page (schedule page)
 	window.location.href = "schedule.html";

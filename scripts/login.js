@@ -55,7 +55,7 @@ function failLogin(reason) {
 function login(user) {
 
 	//add cookie
-	Cookies.set("user", user)
+	Cookies.set("account", user)
 
 	//change to first page (schedule page)
 	window.location.href = "schedule.html"
