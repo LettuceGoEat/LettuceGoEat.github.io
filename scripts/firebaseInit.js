@@ -15,3 +15,16 @@
     PASSWORD: 1,
     INCORRECT: 2
   }
+
+  function animateCSS(element, animationName, callback) {
+    var el = $(element).addClass('animated ' + animationName)
+
+    function handleAnimationEnd() {
+        el.removeClass('animated ' + animationName)
+        el.off('animationend')
+
+        if (typeof callback === 'function') callback()
+    }
+
+    el.on('animationend', handleAnimationEnd)
+}

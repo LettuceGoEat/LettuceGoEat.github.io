@@ -32,16 +32,20 @@ $(document).ready(function() {
 function fail(reason) {
 	switch (reason) {
 		case failReason.USERNAME:
-			console.og("username");
+			animateCSS("input[name='username']", 'shake')
+			console.log("username");
 			break;
 		case failReason.PASSWORD:
+			animateCSS("input[name='password']", 'shake')
 			console.log("password");
-			break;l
+			break;
 		case failReason.INCORRECT:
+			animateCSS("input[name='username']", 'shake')
+			animateCSS("input[name='password']", 'shake')
 			console.log("incorrect");
 			break;
 		default:
-			console("loginFail");
+			console("signUpFail");
 			break;
 	}
 }
