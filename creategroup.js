@@ -91,7 +91,8 @@ next.onclick = function(){
 		var user = Cookies.getJSON("account")
 		var newKey = firebase.database().ref('groups').push();
 		var da = new Date();
-		newKey.child('timestamp').set(da.getTime);
+		z+week-da.getDay
+		newKey.child('timestamp').set(da.getTime()+1000*60*60*24-da.getTime()%(1000*60*60*24)+1000*60*60*24*((week-da.getDay()+7)%7));
 		newKey.child('title').set(title.value);
 		newKey.child('week').set(week);
 		newKey.child('time').set(time);
@@ -102,4 +103,3 @@ next.onclick = function(){
 		})
 	}
 }
-
