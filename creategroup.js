@@ -86,14 +86,15 @@ next.on('click', () => {
 	} else {
 		var user = Cookies.getJSON("account")
 
-		var newKey = firebase.database().ref('groups').push();
-		var da = new Date();
-		newKey.child('timestamp').set(da.getTime() + 1000 * 60 * 60 * 24 - da.getTime() % (1000 * 60 * 60 * 24) + 1000 * 60 * 60 * 24 * ((week - da.getDay() + 7) % 7));
-		newKey.child('title').set(title.value);
-		newKey.child('week').set(week);
-		newKey.child('time').set(time);
-		newKey.child('mylocation').set(mylocation.value);
-		newKey.child('groupsize').set(groupsize.value);
+		var newKey = firebase.database().ref('groups').push()
+		var date = new Date()
+		var day = 1000 * 60 * 60 * 24 //in milliseconds
+		newKey.child('timestamp').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
+		newKey.child('title').set(title.val())
+		newKey.child('week').set(week)
+		newKey.child('time').set(time)
+		newKey.child('mylocation').set(mylocation.val())
+		newKey.child('groupsize').set(groupsize.val())
 		newKey.child('members').child('mem1').set(user["key"]).then(function() {
 			window.location.href = "schedule.html"
 		})
