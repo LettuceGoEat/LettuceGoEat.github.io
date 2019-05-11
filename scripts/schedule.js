@@ -3,6 +3,7 @@ format is [day,timeOfDay(lunch/dinner)] */
 var days = []
 /* day of the week*/
 var dayOfWeek = new Date().getDay();
+
 /*user corresponds to an object with the user attributes */
 var user
 /*userKey corresponds to key of the current user for lookup */
@@ -30,15 +31,29 @@ function getUser(){
 function getDinners(){
   return firebase.database().ref('groups').once("value", (snapshot) => {
         var obj = snapshot.val()
+        var keys = Object.keys(obj)
         //not secure but this isn't the point of this project
         if(obj != null){
           userDinners = Object.values(obj).filter( elem => {
             return Object.values(elem["members"]).includes(userKey)
           })
+
+          /* current timestamp for removind old dinners*/
+          var timeStamp = new Date().getTime()
+          jQuery.each(userDinners,(index,elem) => elem["i"] = index)
+          var oldDinners = userDinners
+          oldDinners = oldDinners.filter((elem) => elem["timestamp"] < timeStamp).map((x) => keys[x["i"]])
+          userDinners = userDinners.filter((elem) => elem["timestamp"] >= timeStamp)
+          removeFromDatabase(oldDinners)
         }
       })
 }
 
+function removeFromDatabase(oldDinners){
+  for(var i = 0; i < oldDinners.length; ++i){
+    firebase.database().ref('/groups/'+oldDinners[i]).remove()
+  }
+}
 function displayInfoForDinner(dinner){
   resetInfo()
   if(dinner != null){
@@ -63,13 +78,17 @@ function formatInfo(dinner){
 function displayDays(){
   for(var i = 0, length1 = userDinners.length; i < length1; i++){
     let dinner = userDinners[i]
-
-    var giveInfoButton =$('<input/>').attr({
-        type: "button",
+    var lunchDinner = (dinner["time"] > 0 ? "dinner" : "lunch")
+    let giveInfoButton =$('<button/>').attr({
         class: "scheduleButtons"
-    })
+    }).html(lunchDinner)
 
-    giveInfoButton.on('click', function() { displayInfoForDinner(dinner); })
+    giveInfoButton.on('click', function() {
+          displayInfoForDinner(dinner)
+          $("button").removeClass("selected")
+          giveInfoButton.addClass("selected")
+
+       })
     $( days[dinner["time"]][ getIndexFromDay(dinner["week"])] ) .append(giveInfoButton)
 
   }
@@ -92,9 +111,11 @@ function displayDefaultDinnerInfo(){
   if(userDinners.length > 0){
     userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
      displayInfoForDinner(userDinners[0])
-     $(".info1").html("This is the information on your next dinner or lunch appointment:")
+     $(".info1").html("Information on your next dinner:")
   } else {
-     $(".info1").html("You currently have no dinner scheduled. Find a group you like and join it!")
+     $(".info1").html("You currently have no dinner scheduled. ")
+     $(".info2").html("Find a group you like and join it! ")
+
   }
 
 

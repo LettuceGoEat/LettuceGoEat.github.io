@@ -4,17 +4,19 @@
 }
 
 html, body {
-  height: 100%;
+
+  background-color: hsl(105, 40%, 67%);
 }
 
-.min-100 {
-    min-height: 100%;
+header{
+    background-color: hsl(105, 60%, 67%);
 }
+
+
 
 .dinner{
     font-size: 18px;
     padding: :15px;
-
 }
 
 .row {
@@ -33,23 +35,63 @@ html, body {
 }
 
 .rectangle{
-  border: none;
+    height: 6vh;
+    background-color: red;
 }
 
 .rightRect{
-   background-image: linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
-    background-image: -webkit-linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
+    background-color: hsl(68, 72%, 48%);
 }
 
 .leftRect{
-    background-image: linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
-    background-image: -webkit-linear-gradient(left, transparent, transparent 10%, red 10%, red 90%, transparent 90%, transparent 100%);
-
+    background-color: hsl(108, 71%, 41%);
 }
 .infoRow{
-    height: 6%;
+    height: 4vh;
+    font-size: 1.95em;
+    font-weight: 600;
+    border: none;
+}
+.paddingRow{
+    height: 4vh;
 }
 .info{
-    background-color: red;
+    background-color: hsl(184, 48%, 44%);
 
+}
+
+.scheduleButtons{
+  /*display: inline-block;
+  padding: 15px 25px;
+  font-size: 1.8em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: hsl(57, 5%, 50%);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  width: 10vh;*/
+}
+button {
+  font-size: 1.5em;
+  font-weight: 600;
+  background-color: hsl(173, 81%, 42%);
+  border-radius: 50px;
+  border-width: 5px;
+  border-color: black;
+  color: #0;
+  top: 10%;
+  width: 70%;
+  height: 80%;
+  box-shadow: 0px 14px 10px black;
+}
+
+button.selected {
+  background-image: none;
+  outline: none;
+  box-shadow: none;
+  transform: translateY(10px);
 }
