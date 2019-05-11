@@ -89,12 +89,15 @@ next.on('click', ()=>{
 	}
 	else{
 		var user = Cookies.getJSON("account")
-		var newKey = firebase.database().ref('groups').push()
-		newKey.child('title').set(title.value)
-		newKey.child('week').set(week)
-		newKey.child('time').set(time)
-		newKey.child('mylocation').set(mylocation.value)
-		newKey.child('groupsize').set(groupsize.value)
+
+		var newKey = firebase.database().ref('groups').push();
+		var da = new Date();
+		newKey.child('timestamp').set(da.getTime);
+		newKey.child('title').set(title.value);
+		newKey.child('week').set(week);
+		newKey.child('time').set(time);
+		newKey.child('mylocation').set(mylocation.value);
+		newKey.child('groupsize').set(groupsize.value);
 		newKey.child('members').child('mem1').set(user["key"]).then(function(){
 			window.location.href = "schedule.html"
 		})
