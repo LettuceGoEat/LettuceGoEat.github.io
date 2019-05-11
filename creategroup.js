@@ -22,8 +22,8 @@ var next = document.getElementById('next')
 var title = document.getElementById('title')
 var mylocation = document.getElementById('location')
 var groupsize = document.getElementById('groupsize')
-var week = 7;
-var time = 2;
+var week = "";
+var time = "";
 function weekgray(){
 	sun.style.color = 'gray';
 	mon.style.color = 'gray';
@@ -36,57 +36,57 @@ function weekgray(){
 sun.onclick = function(){
 	weekgray();
 	sun.style.color = 'black';
-	week = 0;
+	week = "sunday";
 }
 mon.onclick = function(){
 	weekgray();
 	mon.style.color = 'black';
-	week = 1;
+	week = "monday";
 }
 tue.onclick = function(){
 	weekgray();
 	tue.style.color = 'black';
-	week = 2;
+	week = "tuesday";
 }
 wed.onclick = function(){
 	weekgray();
 	wed.style.color = 'black';
-	week = 3;
+	week = "wednesday";
 }
 thu.onclick = function(){
 	weekgray();
 	thu.style.color = 'black';
-	week = 4;
+	week = "thursday";
 }
 fri.onclick = function(){
 	weekgray();
 	fri.style.color = 'black';
-	week = 5;
+	week = "friday";
 }
 sat.onclick = function(){
 	weekgray();
 	sat.style.color = 'black';
-	week = 6;
+	week = "saturday";
 }
 lunch.onclick = function(){
 	lunch.style.color = 'black';
 	dinner.style.color = 'gray';
-	time = 0;
+	time = "lunch";
 }
 dinner.onclick = function(){
 	lunch.style.color = 'gray';
 	dinner.style.color = 'black';
-	time = 1;
+	time = "dinner";
 }
 
 next.onclick = function(){
 	if(title.value==""){
 		alert("please fillin title")
 	}
-	else if(week==7){
+	else if(week==""){
 		alert("please select Date")
 	}
-	else if(time==2){
+	else if(time==""){
 		alert("please select time")
 	}
 	
@@ -97,14 +97,14 @@ next.onclick = function(){
 		alert("please fillin group size")
 	}	
 	else{
-		var user = Cookies.getJSON("user")
+		var user = Cookies.getJSON("account")
 		var newKey = firebase.database().ref('groups').push();
-		newKey.child('name').set(title.value);
-		newKey.child('day').set(week);
-		newKey.child('dinner').set(time);
+		newKey.child('title').set(title.value);
+		newKey.child('week').set(week);
+		newKey.child('time').set(time);
 		newKey.child('mylocation').set(mylocation.value);
 		newKey.child('groupsize').set(groupsize.value);
-		newKey.child('members').child('mem1').set(user.key)
+		newKey.child('members').child('mem1').set(user["key"])
 		window.location.href = "schedule.html"
 	}
 }
