@@ -2,11 +2,12 @@ body
 {
 }
 div {
-	font-size: 1em;
+	font-size: 2.0em;
 	font-weight: 500;
 }
 #title{
-	font-size: 1.2em;
+	width : 40%;
+	font-size: 2.3em;
 	margin : auto;
 	background : #0D73D8;
 	border-radius : 10px;
@@ -18,28 +19,28 @@ div {
 	color : blue
 }
 #content{
+    width : 65%;
 	margin : auto;
-	margin-top:5px;
+	margin-top:20px;
 	float : top;
-	width : 250px;
 	border-collapse : collapse;
 	border : 1px solid black;
 
 }
 #contentmeal{
-	width : 50px;
+	width : 18%;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentpeople{
-	width : 30px;
+	width : 10%;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentmore{
-	width : 20px;
+	width : 7%;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
@@ -64,7 +65,8 @@ div {
 	text-align : center;
 }
 button {
-	margin-top : 5px;
+  margin-top : 20px;
+  width : 30%;
   font-size: 1.5em;
   font-weight: 600;
   background-color: #B8EA91;
