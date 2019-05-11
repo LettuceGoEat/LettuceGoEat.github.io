@@ -8,6 +8,13 @@ $(document).ready(function() {
 		})
 	}
 
+	$("input[type=checkbox]").on("click", (e)=>{
+		var val = $(e.target).prop('checked')
+		if(val == false){
+			$("input[name=all]").prop('checked', false)
+		}
+	})
+
 
 	$("#next").click(() => {
 
