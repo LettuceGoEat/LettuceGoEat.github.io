@@ -93,6 +93,7 @@ next.on('click', () => {
 		newKey.child('title').set(title.val())
 		newKey.child('week').set(week)
 		newKey.child('time').set(time)
+		//newKey.child('food').set(user["food"])
 		newKey.child('mylocation').set(mylocation.val())
 		newKey.child('groupsize').set(groupsize.val())
 		newKey.child('members').child('mem1').set(user["key"]).then(function() {
