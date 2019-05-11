@@ -5,10 +5,11 @@ html, body {
 }
 
 header{
+    font-size: 5em;
     background-color: hsl(105, 60%, 67%);
 }
 
-.container{
+.schedule{
     margin-left: 2%;
 }
 
