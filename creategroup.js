@@ -90,6 +90,8 @@ next.onclick = function(){
 	else{
 		var user = Cookies.getJSON("account")
 		var newKey = firebase.database().ref('groups').push();
+		var da = new Date();
+		newKey.child('timestamp').set(da.getTime);
 		newKey.child('title').set(title.value);
 		newKey.child('week').set(week);
 		newKey.child('time').set(time);
