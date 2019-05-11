@@ -57,8 +57,11 @@ button.time {
   border-width: 5px;
   border-color: black;
   height: 100%;
+<<<<<<< HEAD
   width: 100%;
   box-shadow: 0px 14px 10px black;
+=======
+>>>>>>> 5970378a059af1ba22e71184eaab178003c5dcb6
 }
 
 button.selected {

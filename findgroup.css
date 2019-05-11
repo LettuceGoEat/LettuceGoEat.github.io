@@ -1,7 +1,12 @@
 body
 {
 }
+div {
+	font-size: 1em;
+	font-weight: 500;
+}
 #title{
+	font-size: 1.2em;
 	margin : auto;
 	background : #0D73D8;
 	border-radius : 10px;
@@ -54,4 +59,17 @@ body
 	border-collapse : collapse;
 	border : 1px solid black;
 	border-bottom : 2px solid black;
+}
+#bu{
+	text-align : center;
+}
+button {
+	margin-top : 5px;
+  font-size: 1.5em;
+  font-weight: 600;
+  background-color: #B8EA91;
+  border-radius: 50px;
+  border-width: 2px;
+  border-color: black;
+  height: 100%;
 }
