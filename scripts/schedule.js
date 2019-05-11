@@ -14,6 +14,8 @@ var userDinners = []
 /* days of the week in order */
 var daysOfTheWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 
+var daysOfTheWeekSmall = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+
 
 $( document ).ready(function() {
   fillDatesInOrder()
@@ -100,7 +102,7 @@ function fillDatesInOrder(){
 
   //modify each day cell to be its corresponding day from your current day
   $(".day").each(function( index ) {
-     $( this ).html( daysOfTheWeek[ getDayFromIndex( index ) ] )
+     $( this ).html( daysOfTheWeekSmall[ getDayFromIndex( index ) ] )
   })
   days[0] = $(".leftRect")
   days[1] = $(".rightRect")
