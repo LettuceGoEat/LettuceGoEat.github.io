@@ -18,12 +18,11 @@ $(document).ready(function() {
 
 	$("#next").click(() => {
 
-		var selected = []
+		var selected = {}
 		$('input[type=checkbox]').each(function(k, v) {
 			selected[v.name] = $(this).prop('checked')
 		});
-		selected.pop();	//don't need value for all
-
+		delete selected.all;	//don't need value for all
 		var username = Cookies.getJSON("account").user.username
 		firebase.database().ref('/users/').orderByChild('username').equalTo(username).once("value", (snapshot) => {
 			var obj = snapshot.val()
