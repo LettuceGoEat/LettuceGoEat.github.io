@@ -22,7 +22,7 @@ $( document ).ready(function() {
 })
 
 function getUser(){
-  var obj = user = Cookies.getJSON("account")
+  var obj = Cookies.getJSON("account")
   user = obj["user"]
   userKey = obj["key"]
 }
@@ -48,7 +48,7 @@ function displayInfoForDinner(dinner){
 
 function formatInfo(dinner){
 
-  $(".info2").html("You have " + (dinner["dinner"] > 0 ? "dinner" : "lunch") + " on " + daysOfTheWeek[dayOfWeek] + "!")
+  $(".info2").html("You have " + (dinner["time"] > 0 ? "dinner" : "lunch") + " on " + daysOfTheWeek[dayOfWeek] + "!")
 
   $(".info3").html("There are " + 5 + " people planning to come")
 
@@ -70,7 +70,7 @@ function displayDays(){
     })
 
     giveInfoButton.on('click', function() { displayInfoForDinner("", dinner, ""); })
-    $( days[dinner["dinner"]][ getIndexFromDay(dinner["day"])] ) .append(giveInfoButton)
+    $( days[dinner["time"]][ getIndexFromDay(dinner["week"])] ) .append(giveInfoButton)
 
   }
 }
@@ -90,7 +90,7 @@ function fillDatesInOrder(){
 
 function displayDefaultDinnerInfo(){
   if(userDinners.length > 0){
-    userDinners.sort( (elemA,elemB) =>  getIndexFromDay(elemB["day"]) - getIndexFromDay(elemA["day"]) == 0 ? getIndexFromDay(elemB["dinner"]) - getIndexFromDay(elemA["dinner"]) : getIndexFromDay(elemB["day"]) - getIndexFromDay(elemA["day"]))
+    userDinners.sort( (elemA,elemB) =>  getIndexFromDay(elemB["week"]) - getIndexFromDay(elemA["week"]) == 0 ? getIndexFromDay(elemB["time"]) - getIndexFromDay(elemA["time"]) : getIndexFromDay(elemB["week"]) - getIndexFromDay(elemA["week"]))
      displayInfoForDinner(userDinners[0])
      $(".info1").html("This is the information on your next dinner or lunch appointment:")
   } else {
