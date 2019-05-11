@@ -8,6 +8,10 @@ div {
 	font-weight: 700;
 }
 
+.headerButton {
+  font-size: 3em;
+}
+
 .interface{
 	background-color: #B8EA91;
 	font-weight: 600;

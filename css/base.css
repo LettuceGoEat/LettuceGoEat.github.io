@@ -5,6 +5,10 @@ body{
     background-color: #34B532;
 }
 
+.row.headerRow {
+  height: 10vh;
+}
+
 header {
   width: 100%;
   vertical-align: middle;
