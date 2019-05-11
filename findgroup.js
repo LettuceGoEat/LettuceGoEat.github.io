@@ -136,6 +136,13 @@ function seedetail(t){
 	}, {
 		once : true
 	})
+	bbb.onclick = function(){
+		var newKey = firebase.database().ref('groups/'+t.className+'/members').push()
+		var user = Cookies.getJSON("account")
+		newKey.set(user["key"]).then(function(){
+			window.location.href = "schedule.html"
+		})
+	}
 }
 var cg = document.getElementById('create')
 var autof = document.getElementById('autofind')
