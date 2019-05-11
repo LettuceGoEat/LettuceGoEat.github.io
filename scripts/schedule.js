@@ -48,7 +48,7 @@ function displayInfoForDinner(dinner){
 
 function formatInfo(dinner){
 
-  $(".info2").html("You have " + (dinner["time"] > 0 ? "dinner" : "lunch") + " on " + daysOfTheWeek[dayOfWeek] + "!")
+  $(".info2").html("You have " + (dinner["time"] > 0 ? "dinner" : "lunch") + " on " + daysOfTheWeek[dinner["week"]] + "!")
 
   $(".info3").html("There are " + 5 + " people planning to come")
 
@@ -62,14 +62,14 @@ function formatInfo(dinner){
 }
 function displayDays(){
   for(var i = 0, length1 = userDinners.length; i < length1; i++){
-    var dinner = userDinners[i]
+    let dinner = userDinners[i]
 
     var giveInfoButton =$('<input/>').attr({
         type: "button",
         class: "scheduleButtons"
     })
 
-    giveInfoButton.on('click', function() { displayInfoForDinner("", dinner, ""); })
+    giveInfoButton.on('click', function() { displayInfoForDinner(dinner); })
     $( days[dinner["time"]][ getIndexFromDay(dinner["week"])] ) .append(giveInfoButton)
 
   }
@@ -90,7 +90,7 @@ function fillDatesInOrder(){
 
 function displayDefaultDinnerInfo(){
   if(userDinners.length > 0){
-    userDinners.sort( (elemA,elemB) =>  getIndexFromDay(elemB["week"]) - getIndexFromDay(elemA["week"]) == 0 ? getIndexFromDay(elemB["time"]) - getIndexFromDay(elemA["time"]) : getIndexFromDay(elemB["week"]) - getIndexFromDay(elemA["week"]))
+    userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
      displayInfoForDinner(userDinners[0])
      $(".info1").html("This is the information on your next dinner or lunch appointment:")
   } else {
@@ -105,7 +105,8 @@ function getDayFromIndex(index){
 }
 
 function getIndexFromDay(day){
-  return ( dayOfWeek-day ) % 7
+  var value = ( day-dayOfWeek ) % 7
+  return value > 0 ? value : value + 7
 }
 
 function resetInfo(){
