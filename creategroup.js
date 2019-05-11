@@ -72,16 +72,17 @@ dinner.on('click', () => {
 })
 
 next.on('click', () => {
-	if (title.value == "") {
-		animateCSS("#title", 'shake')
+	console.log("create")
+	if (title.val() == "") {
+		animateCSS('#title', 'shake')
 	} else if (week == 7) {
-		animateCSS(".week", 'shake')
+		animateCSS('.week', 'shake')
 	} else if (time == 2) {
-		animateCSS(".time", 'shake')
-	} else if (mylocation.value == "") {
-		animateCSS("#location", 'shake')
-	} else if (groupsize.value == "") {
-		animateCSS("#groupsize", 'shake')
+		animateCSS('.time', 'shake')
+	} else if (mylocation.val() == "") {
+		animateCSS('#location', 'shake')
+	} else if (groupsize.val() == "") {
+		animateCSS('#groupsize', 'shake')
 	} else {
 		var user = Cookies.getJSON("account")
 
