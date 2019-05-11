@@ -95,8 +95,9 @@ next.onclick = function(){
 		newKey.child('time').set(time);
 		newKey.child('mylocation').set(mylocation.value);
 		newKey.child('groupsize').set(groupsize.value);
-		newKey.child('members').child('mem1').set(user["key"])
-		//window.location.href = "schedule.html"
+		newKey.child('members').child('mem1').set(user["key"]).then(function(){
+			window.location.href = "schedule.html"
+		})
 	}
 }
 
