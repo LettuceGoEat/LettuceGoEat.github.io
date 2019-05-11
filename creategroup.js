@@ -1,76 +1,76 @@
 // JavaScript source code
 
-var sun = document.getElementById('sun')
-var mon = document.getElementById('mon')
-var tue = document.getElementById('tue')
-var wed = document.getElementById('wed')
-var thu = document.getElementById('thu')
-var fri = document.getElementById('fri')
-var sat = document.getElementById('sat')
-var lunch = document.getElementById('lunch')
-var dinner = document.getElementById('dinner')
-var next = document.getElementById('next')
-var title = document.getElementById('title')
-var mylocation = document.getElementById('location')
-var groupsize = document.getElementById('groupsize')
-var week = 7;
-var time = 2;
+var sun = $('#sun')
+var mon = $('#mon')
+var tue = $('#tue')
+var wed = $('#wed')
+var thu = $('#thu')
+var fri = $('#fri')
+var sat = $('#sat')
+var lunch = $('#lunch')
+var dinner = $('#dinner')
+var next = $('#next')
+var title = $('#title')
+var mylocation = $('#location')
+var groupsize = $('#groupsize')
+var week = 7
+var time = 2
 function weekgray(){
-	sun.style.color = 'gray';
-	mon.style.color = 'gray';
-	tue.style.color = 'gray';
-	wed.style.color = 'gray';
-	thu.style.color = 'gray';
-	fri.style.color = 'gray';
-	sat.style.color = 'gray';
+	sun.removeClass('selected')
+	mon.removeClass('selected')
+	tue.removeClass('selected')
+	wed.removeClass('selected')
+	thu.removeClass('selected')
+	fri.removeClass('selected')
+	sat.removeClass('selected')
 }
-sun.onclick = function(){
-	weekgray();
-	sun.style.color = 'black';
-	week = 0;
-}
-mon.onclick = function(){
-	weekgray();
-	mon.style.color = 'black';
-	week = 1;
-}
-tue.onclick = function(){
-	weekgray();
-	tue.style.color = 'black';
-	week = 2;
-}
-wed.onclick = function(){
-	weekgray();
-	wed.style.color = 'black';
-	week = 3;
-}
-thu.onclick = function(){
-	weekgray();
-	thu.style.color = 'black';
-	week = 4;
-}
-fri.onclick = function(){
-	weekgray();
-	fri.style.color = 'black';
-	week = 5;
-}
-sat.onclick = function(){
-	weekgray();
-	sat.style.color = 'black';
-	week = 6;
-}
-lunch.onclick = function(){
-	lunch.style.color = 'black';
-	dinner.style.color = 'gray';
-	time = 0;
-}
-dinner.onclick = function(){
-	lunch.style.color = 'gray';
-	dinner.style.color = 'black';
-	time = 1;
-}
+sun.on('click', ()=>{
+	weekgray()
+	sun.addClass('selected')
+	week = 0
+})
+mon.on('click', ()=>{
+	weekgray()
+	mon.addClass('selected')
+	week = 1
+})
+tue.on('click', ()=>{
+	weekgray()
+	tue.addClass('selected')
+	week = 2
+})
+wed.on('click', ()=>{
+	weekgray()
+	wed.addClass('selected')
+	week = 3
+})
+thu.on('click', ()=>{
+	weekgray()
+	thu.addClass('selected')
+	week = 4
+})
+fri.on('click', ()=>{
+	weekgray()
+	fri.addClass('selected')
+	week = 5
+})
+sat.on('click', ()=>{
+	weekgray()
+	sat.addClass('selected')
+	week = 6
+})
+lunch.on('click', ()=>{
+	lunch.addClass('selected')
+	dinner.removeClass('selected')
+	time = 0
+})
+dinner.on('click', ()=>{
+	lunch.removeClass('selected')
+	dinner.addClass('selected')
+	time = 1
+})
 
-next.onclick = function(){
+next.on('click', ()=>{
 	if(title.value==""){
 		animateCSS("#title", 'shake')
 	}
@@ -80,15 +80,18 @@ next.onclick = function(){
 	else if(time==2){
 		animateCSS(".time", 'shake')
 	}
-	
+
 	else if(mylocation.value==""){
 		animateCSS("#location", 'shake')
 	}
 	else if(groupsize.value==""){
+
 		animateCSS("#groupsize", 'shake')
 	}	
+
 	else{
 		var user = Cookies.getJSON("account")
+
 		var newKey = firebase.database().ref('groups').push();
 		var da = new Date();
 		newKey.child('timestamp').set(da.getTime()+1000*60*60*24-da.getTime()%(1000*60*60*24)+1000*60*60*24*((week-da.getDay()+7)%7));
@@ -101,4 +104,4 @@ next.onclick = function(){
 			window.location.href = "schedule.html"
 		})
 	}
-}
+})

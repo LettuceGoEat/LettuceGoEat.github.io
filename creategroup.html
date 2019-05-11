@@ -1,58 +1,94 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Lettuce Go Eat</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<!-- Latest compiled JavaScript -->
-	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-	<script src="scripts/firebaseInit.js"></script>
-	<link rel="stylesheet" href="creategroup.css">
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=0.4, min-scale=0.4, max-scale=0.4 user-scalable=no">
-
-</head>
+	<head>
+		<meta charset="utf-8" />
+		<title>Lettuce Go Eat</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<script src="scripts/firebaseInit.js"></script>
+		<link rel="stylesheet" href="creategroup.css">
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=0.4, min-scale=0.4, max-scale=0.4 user-scalable=no">
+	</head>
 <header></header>
 <body>
-	<h3>Create Group</h3>
-	<div>Title:</div>
-	<div><input type="text" id='title'></div>
-
-	<div>Date:</div>
-	<div>
-		<button class='week' id='sun'>Sun</button>
-		<button class='week' id='mon'>Mon</button>
-		<button class='week' id='tue'>Tue</button>
-		<button class='week' id='wed'>Wed</button>
+	<div class="container">
+		<div class="row">
+			<h3>Create Group</h3>
+		</div>
+		<div class="row">
+			<div>Title:</div>
+		</div>
+		<div class="row">
+			<input class="interface" type="text" id='title' placeholder="Awesome group">
+		</div>
+		<div class="row" style="height:1vh"></div>
+		<div class="row">
+			<div>Date:</div>
+		</div>
+		<div class="row">
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='sun'>Sun</button>
+			</div>
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='mon'>Mon</button>
+			</div>
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='tue'>Tue</button>
+			</div>
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='wed'>Wed</button>
+			</div>
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='thu'>Thu</button>
+			</div>
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='fri'>Fri</button>
+			</div>
+			<div class="col day padding-0">
+				<button  name="day" class='week' id='sat'>Sat</button>
+			</div>
+		</div>
+		<div class="row" style="height:1vh"></div>
+		<div class="row">
+			<div>Time:</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button  name="time" class='time' id='lunch'>Lunch</button>
+			</div>
+			<div class="col">
+				<button  name="time" class='time' id='dinner'>Dinner</button>
+			</div>
+		</div>
+		<div class="row" style="height:1vh"></div>
+		<div class="row">
+			<div>Location:</div>
+		</div>
+		<div class="row">
+			<input class="interface" type="text" id='location' placeholder="Where?">
+		</div>
+		<div class="row" style="height:3vh"></div>
+		<div class="row">
+			<div class="col">
+				Group Size:
+			</div>
+			<div class="col">
+				<input class="interface"  type="number" id='groupsize' step="1" min="2" max="99" placeholder="2">
+			</div>
+		</div>
+		<div class="row" style="height:3vh"></div>
+		<div class="row justify-content-end">
+			<button id='next'>Create</button>
+		</div>
 	</div>
-	<div>
-		<button class='week' id='thu'>Thu</button>
-		<button class='week' id='fri'>Fri</button>
-		<button class='week' id='sat'>Sat</button>
-	</div>
-
-	<div>Time:</div>
-	<div>
-		<button class='time' id='lunch'>Lunch</button>
-		<button class='time' id='dinner'>Dinner</button>
-	</div>
-
-	<div>Location:</div>
-	<div><input type="text" id='location'></div>
-
-	<div>Group Size:</div>
-	<div><input type="text" id='groupsize'></div>
-
-	<div><button id='next'>Next</button></div>
-
-
 	<script src="creategroup.js"></script>
 </body>
 </html>
