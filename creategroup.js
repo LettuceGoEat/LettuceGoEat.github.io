@@ -72,20 +72,20 @@ dinner.onclick = function(){
 
 next.onclick = function(){
 	if(title.value==""){
-		alert("please fillin title")
+		animateCSS("#title", 'shake')
 	}
 	else if(week==7){
-		alert("please select Date")
+		animateCSS(".week", 'shake')
 	}
 	else if(time==2){
-		alert("please select time")
+		animateCSS(".time", 'shake')
 	}
 	
 	else if(mylocation.value==""){
-		alert("please fillin location")
+		animateCSS("#location", 'shake')
 	}
 	else if(groupsize.value==""){
-		alert("please fillin group size")
+		animateCSS("#groupsize", 'shake')
 	}	
 	else{
 		var user = Cookies.getJSON("account")
