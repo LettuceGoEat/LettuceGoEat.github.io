@@ -60,20 +60,35 @@ function displayInfoForDinner(dinner){
   resetInfo()
   if(dinner != null){
     formatInfo(dinner)
+    //create go to chat button
+    let goToChatButton =$('<button/>').attr({
+        class: "chatButton"
+    }).html("Chat")
+    //add cookie creater and go to chat function
+    goToChatButton.on('click', function() {
+          //get cookie
+          var obj = Cookies.getJSON("account")
+          //set cookie to add groupChat dinner
+          obj["groupChat"] = dinner
+          Cookies.set("account",obj)
+          //go to chat page of selected dinner
+          window.location.href = "chat.html"
+
+       })
+    //append function to the dinner information
+    $(".info5").append(goToChatButton)
   }
 }
 
 function formatInfo(dinner){
 
-  $(".info2").html("You have " + (dinner["time"] > 0 ? "dinner" : "lunch") + " on " + daysOfTheWeek[dinner["week"]] + "!")
+  $(".info2").html('<b>' + dinner["title"] + '</b>')
 
-  $(".info3").html("There are " + 5 + " people planning to come")
+  $(".info3").html('<b>' + (dinner["time"] > 0 ? "Dinner" : "Lunch") + '</b>'+ " on " + '<b>' + daysOfTheWeek[dinner["week"]] + "!'</b>'")
 
-  $(".info4").html("Placeholder!!!")
+  $(".info4").html('<b>'+ dinner["groupsize"] +" people </b> coming ")
 
-  $(".info5").html("Any questions or confusion on where and when to go?")
-
-  $(".info6").html("Go ask your group members!")
+  $(".info5").html("Location: " + '<b>' + dinner["mylocation"] + '</b>')
 
 
 }
@@ -87,6 +102,7 @@ function displayDays(){
 
     giveInfoButton.on('click', function() {
           displayInfoForDinner(dinner)
+          $(".info1").html("Information on this dinner: ")
           $("button").removeClass("selected")
           giveInfoButton.addClass("selected")
 
@@ -111,7 +127,7 @@ function fillDatesInOrder(){
 
 function displayDefaultDinnerInfo(){
   if(userDinners.length > 0){
-    userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
+     userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
      displayInfoForDinner(userDinners[0])
      $(".info1").html("Information on your next dinner:")
   } else {
