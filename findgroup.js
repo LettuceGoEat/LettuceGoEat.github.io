@@ -1,7 +1,7 @@
 // JavaScript source code
 
 
-firebase.database().ref('/groups/').orderByChild('/order/').once("value", function(datasnapshot){
+firebase.database().ref('/groups/').orderByChild('order').once("value", function(datasnapshot){
 	var compare = 0
 	var user = Cookies.getJSON("account")
 	firebase.database().ref('/users/'+user["key"]+'/joinedtime/').once("value", function(datasnapshot2){
