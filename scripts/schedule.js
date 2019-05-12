@@ -17,12 +17,12 @@ var daysOfTheWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"
 var daysOfTheWeekSmall = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
 
 
-$( document ).ready(function() {
+function setup() {
+  $("#headerSchedule").addClass("selected")
   fillDatesInOrder()
   getUser()
   getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
-
-})
+}
 
 function getUser(){
   var obj = Cookies.getJSON("account")
@@ -43,7 +43,7 @@ function getDinners(){
               dinner["key"] = elem[0]
               return dinner
           })
-
+          userDinners = userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? elemA["time"] - elemB["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
           /* current timestamp for removind old dinners*/
           var timeStamp = new Date().getTime()
           jQuery.each(userDinners,(index,elem) => elem["i"] = index)
@@ -131,14 +131,16 @@ function fillDatesInOrder(){
 
 function displayDefaultDinnerInfo(){
   if(userDinners.length > 0){
-     userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
+     var dinner = userDinners[0]
+     $( days[dinner["time"]][ getIndexFromDay(dinner["week"])] ).children("button").addClass("selected")
      displayInfoForDinner(userDinners[0])
-     $(".info1").html("Information on your next dinner:")
+     $(".info1").html("Information on your next meal:")
   } else {
      $(".info1").html("You currently have no dinner scheduled. ")
      $(".info2").html("Find a group you like and join it! ")
 
   }
+
 
 
 }

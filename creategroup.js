@@ -1,5 +1,9 @@
 // JavaScript source code
 
+function setup(){
+	$("#headerFindGroup").addClass('selected')
+}
+
 var sun = $('#sun')
 var mon = $('#mon')
 var tue = $('#tue')

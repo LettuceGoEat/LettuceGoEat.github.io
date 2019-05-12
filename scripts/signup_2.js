@@ -1,4 +1,6 @@
-$(document).ready(function() {
+function setup(){
+
+	$("#headerProfile").addClass('selected')
 
 	//if there are already selections show them
 	var acc = Cookies.getJSON('account')
@@ -38,8 +40,8 @@ $(document).ready(function() {
 			}
 		})
 	})
+}
 
-});
 
 function fail(reason) {
 	switch (reason) {
