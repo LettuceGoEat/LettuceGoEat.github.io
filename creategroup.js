@@ -105,7 +105,7 @@ next.on('click', () => {
 			secondKey.set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)+1)
 		}
 		firebase.database().ref('/users/'+user["key"]+'/food.').once("value", function(datasnapshot){
-			newKey.child('food').set(datasnapshot.val()])
+			newKey.child('food').set(datasnapshot.val())
 		})
 
 		newKey.child('mylocation').set(mylocation.val())
