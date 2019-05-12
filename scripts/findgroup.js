@@ -63,6 +63,8 @@ function setup() {
 		}
 		showthedata(selected, v, vv);
 	})
+
+
 }
 
 function showthedata(selected, wee, din) {
@@ -299,7 +301,7 @@ function seedetail(t) {
 				c5.innerHTML += " None"
 			}
 		}
-		c6.innerHTML = "loaction : "+x.mylocation
+		c6.innerHTML = "loaction : " + x.mylocation
 		t.deleteRow(1)
 		t.deleteRow(1)
 		t.addEventListener("click", function() {
@@ -399,4 +401,19 @@ function changedinner() {
 		ta.removeChild(ta.firstChild);
 	}
 	showthedata(selected, v, vv);
+}
+
+function toggleFilter() {
+
+	var display = $("#filter").css('display')
+
+	if (display == "block") {
+		$("#filter").css('display', 'none')
+		$("#tableappend").css('height', '55vh')
+	} else if (display == "none") {
+		$("#filter").css('display', 'block')
+		$("#tableappend").css('height', '36vh')
+	} else {
+		console.log("ERR: toggleFilter")
+	}
 }

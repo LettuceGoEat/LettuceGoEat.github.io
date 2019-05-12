@@ -20,9 +20,10 @@ $(document).ready(function() {
 						password: password
 					}
 					var newKey = firebase.database().ref('/users/').push()
-					newKey.set({user: user,
-						key: key})
-					next(user)
+					newKey.set(user)
+					next({user: user,
+						key: newKey
+					})
 				}
 			})
 		}
