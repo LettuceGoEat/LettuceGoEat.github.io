@@ -2,6 +2,69 @@
 
 function setup() {
 	$("#headerFindGroup").addClass('selected')
+
+	var cg = document.getElementById('create')
+	var autof = document.getElementById('autofind')
+
+	cg.onclick = function() {
+		window.location.href = "creategroup.html"
+	}
+
+	var acc = Cookies.getJSON('account')
+	if (acc != null && acc.user != null && acc.user.food != null) {
+		$('input[type=checkbox]').each(function(k, v) {
+			$(this).prop('checked', acc.user.food[v.name])
+		})
+		var selected = {}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+		});
+		var v;
+		for (i = 0; i < changew.options.length; i++) {
+			if (changew.options[i].selected == true) {
+				v = changew.options[i].value;
+			}
+		}
+		var changed = document.getElementById('changed');
+		var vv;
+		for (i = 0; i < changed.options.length; i++) {
+			if (changed.options[i].selected == true) {
+				vv = changed.options[i].value;
+			}
+		}
+		showthedata(selected, v, vv);
+	}
+
+	$("input[type=checkbox][name!=all]").on("click", (e) => {
+		var val = $(e.target).prop('checked')
+		if (val == false) {
+			$("input[name=all]").prop('checked', false)
+		}
+		var selected = {}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+		});
+		var v;
+		for (i = 0; i < changew.options.length; i++) {
+			if (changew.options[i].selected == true) {
+				v = changew.options[i].value;
+			}
+		}
+		var changed = document.getElementById('changed');
+		var vv;
+		for (i = 0; i < changed.options.length; i++) {
+			if (changed.options[i].selected == true) {
+				vv = changed.options[i].value;
+			}
+		}
+		var ta = document.getElementById('tableappend')
+		while (ta.firstChild) {
+			ta.removeChild(ta.firstChild);
+		}
+		showthedata(selected, v, vv);
+	})
+
+
 }
 
 function showthedata(selected, wee, din) {
@@ -238,7 +301,7 @@ function seedetail(t) {
 				c5.innerHTML += " None"
 			}
 		}
-		c6.innerHTML = "loaction : "+x.mylocation
+		c6.innerHTML = "loaction : " + x.mylocation
 		t.deleteRow(1)
 		t.deleteRow(1)
 		t.addEventListener("click", function() {
@@ -260,65 +323,6 @@ function seedetail(t) {
 		}
 	})
 }
-var cg = document.getElementById('create')
-
-cg.onclick = function() {
-	window.location.href = "creategroup.html"
-}
-
-var acc = Cookies.getJSON('account')
-if (acc != null && acc.user != null && acc.user.food != null) {
-	$('input[type=checkbox]').each(function(k, v) {
-		$(this).prop('checked', acc.user.food[v.name])
-	})
-	var selected = {}
-	$('input[type=checkbox]').each(function(k, v) {
-		selected[v.name] = $(this).prop('checked')
-	});
-	var v;
-	for (i = 0; i < changew.options.length; i++) {
-		if (changew.options[i].selected == true) {
-			v = changew.options[i].value;
-		}
-	}
-	var changed = document.getElementById('changed');
-	var vv;
-	for (i = 0; i < changed.options.length; i++) {
-		if (changed.options[i].selected == true) {
-			vv = changed.options[i].value;
-		}
-	}
-	showthedata(selected, v, vv);
-}
-
-$("input[type=checkbox][name!=all]").on("click", (e) => {
-	var val = $(e.target).prop('checked')
-	if (val == false) {
-		$("input[name=all]").prop('checked', false)
-	}
-	var selected = {}
-	$('input[type=checkbox]').each(function(k, v) {
-		selected[v.name] = $(this).prop('checked')
-	});
-	var v;
-	for (i = 0; i < changew.options.length; i++) {
-		if (changew.options[i].selected == true) {
-			v = changew.options[i].value;
-		}
-	}
-	var changed = document.getElementById('changed');
-	var vv;
-	for (i = 0; i < changed.options.length; i++) {
-		if (changed.options[i].selected == true) {
-			vv = changed.options[i].value;
-		}
-	}
-	var ta = document.getElementById('tableappend')
-	while (ta.firstChild) {
-		ta.removeChild(ta.firstChild);
-	}
-	showthedata(selected, v, vv);
-})
 
 function selectAll(val) {
 	$("input[type=checkbox]").prop('checked', val)
@@ -397,4 +401,19 @@ function changedinner() {
 		ta.removeChild(ta.firstChild);
 	}
 	showthedata(selected, v, vv);
+}
+
+function toggleFilter() {
+
+	var display = $("#filter").css('display')
+
+	if (display == "block") {
+		$("#filter").css('display', 'none')
+		$("#tableappend").css('height', '55vh')
+	} else if (display == "none") {
+		$("#filter").css('display', 'block')
+		$("#tableappend").css('height', '36vh')
+	} else {
+		console.log("ERR: toggleFilter")
+	}
 }

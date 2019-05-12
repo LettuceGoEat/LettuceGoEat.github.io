@@ -1,82 +1,270 @@
-header{
-    font-size: 0.6em;
+header {
+    font-size: 1.4em;
 }
 
-body
-{
+body {
 }
+
 div {
-	font-size: 2.0em;
-	font-weight: 500;
+	font-size: 1.6em;
+	font-weight: 600;
 }
 
-#title{
-	width : 40%;
-	font-size: 2.3em;
-	margin : auto;
-	background : #0D73D8;
-	border-radius : 10px;
+.row {
+	height: 4vh;
 }
-#vege{
-	color : #57FB04;
+
+.triple {
+	height: 14vh;
 }
-#position{
-	color : blue
+
+#filter {
+	display: none;
 }
+
+#toggleFilter {
+	font-size: 1.2em;
+}
+
+.label {
+  text-align: center;
+  background-color: #B8EA91;
+  border-radius: 35px;
+  font-size: 1.5em;
+  line-height: 1.2;
+  border-style: none;
+  width: 80%;
+  height: 100%;
+}
+
+.label2 {
+  text-align: center;
+  background-color: #B8EA91;
+  border-radius: 35px;
+  font-size: 0.45em;
+  line-height: 1.2;
+  border-style: none;
+  width: 80%;
+  height: 100%;
+}
+
+.label3 {
+  text-align: center;
+  background-color: #B8EA91;
+  border-radius: 35px;
+  font-size: 1.1em;
+  line-height: 1.2;
+  border-style: none;
+  width: 80%;
+  height: 100%;
+}
+
+.label4 {
+  text-align: center;
+  background-color: #B8EA91;
+  border-radius: 35px;
+  font-size: 1.6em;
+  line-height: 1.2;
+  border-style: none;
+  width: 80%;
+  height: 100%;
+}
+
+.label6 {
+  text-align: center;
+  font-size: 1.1em;
+  line-height: 1.2;
+  font-weight: 700;
+  border-style: none;
+  width: 80%;
+  height: 100%;
+}
+
+button {
+  font-size: 1.5em;
+  font-weight: 600;
+  background-color: #B8EA91;
+  border-radius: 50px;
+  border-width: 5px;
+  border-color: black;
+  width: 30%;
+  height: 100%;
+  box-shadow: 0px 14px 10px black;
+}
+
+button:active {
+  background-image: none;
+  outline: none;
+  box-shadow: none;
+  transform: translateY(10px);
+}
+/*----------------------------------------------------------------------------------------------------*/
+/* The switch - the box around the slider */
+.switch {
+  right: 15%;
+  float: right;
+  transform: scale(1.6);
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* Select */
+
+.select-css {
+
+	text-align: center;
+	background-color: #B8EA91;
+	display: block;
+	font-size: 0.6em;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.1;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	appearance: none;
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+	height: 100%;
+}
+.select-css::-ms-expand {
+	display: none;
+}
+
+.select-css:hover {
+	border-color: #888;
+}
+
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+.select-css option {
+	text-align: center;
+	font-size: 0.4em;
+	font-weight:500;
+	background-color: #B8EA91;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+
+#tableappend {
+	overflow-y: scroll;
+	height: 55vh;
+}
+
 #content{
-    width : 65%;
-	margin : auto;
-	margin-top:20px;
+	width: 90%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
 	float : top;
 	border-collapse : collapse;
 	border : 1px solid black;
+	font-size: 1.2em;
 
 }
-#contentmeal{
-	width : 18%;
-	background : #B5FD69;
-	border-collapse : collapse;
-	border : 1px solid black;
-}
-#contentpeople{
-	width : 10%;
-	background : #B5FD69;
-	border-collapse : collapse;
-	border : 1px solid black;
-}
-#contentmore{
-	width : 7%;
-	background : #B5FD69;
-	border-collapse : collapse;
-	border : 1px solid black;
-}
-#contentintext{
-	background : #B5FD69;
-	border-collapse : collapse;
-	border : 1px solid black;
-}
-#contentc{
-	background : #B5FD69;
-	border-collapse : collapse;
-	border : 1px solid black;
-}
-#contenttitle{
+#contenttitle{	/* Day */
 	background : #58D536;
 	border-collapse : collapse;
 	border : 1px solid black;
 	border-bottom : 2px solid black;
 }
-#bu{
-	text-align : center;
+#contentintext{	/* Title or types */
+	padding-left: 2%;
+	background : #B5FD69;
+	border-collapse : collapse;
+	border : 1px solid black;
 }
-button {
-  margin-top : 20px;
-  width : 30%;
-  font-size: 1.5em;
-  font-weight: 600;
-  background-color: #B8EA91;
-  border-radius: 50px;
-  border-width: 2px;
-  border-color: black;
-  height: 100%;
+#contentmeal{	/* Lunch/Dinner	*/
+	padding-left: 2%;
+	width : 25%;
+	background : #B5FD69;
+	border-collapse : collapse;
+	border : 1px solid black;
+}
+#contentpeople{	/* x/y*/
+	text-align: center;
+	width : 15%;
+	background : #B5FD69;
+	border-collapse : collapse;
+	border : 1px solid black;
+}
+#contentmore{	/* ... */
+	width : 10%;
+	text-align: center;
+	background : #B5FD69;
+	border-collapse : collapse;
+	border : 1px solid black;
 }

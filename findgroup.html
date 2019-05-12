@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<!-- Popper JS -->
@@ -18,55 +17,121 @@
 		<script src="scripts/firebaseInit.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 		<meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=0.4, min-scale=0.4, max-scale=0.4 user-scalable=no">
-
 		<link rel="stylesheet" href="css/findgroup.css">
 		<script src="scripts/findgroup.js"></script>
-
-</head>
+	</head>
 <header></header>
 <body>
-	<table id='title'>
-		<tr>
-			<td colspan="3">Available groups for</td>
-		</tr>
-		<tr>
-			<td id='vege'>Vegetarian</td>
-			<td>in </td>
-			<td id='position'>Daejeon</td>
-		</tr>
-	</table>
-
-	<div>
-		<select id = 'changew' name='week' onchange="changeweek()">
-			<option value='all' selected>all</option>
-			<option value='sunday'>Sunday</option>
-			<option value='monday'>Monday</option>
-			<option value='tuesday'>Tuesday</option>
-			<option value='wednesday'>Wednesday</option>
-			<option value='thursday'>Thursday</option>
-			<option value='friday'>Friday</option>
-			<option value='saturday'>Saturday</option>
-		</select>
-		<select id = 'changed' name='week' onchange="changedinner()">
-			<option value='all' selected>all</option>
-			<option value='lunch'>Lunch</option>
-			<option value='dinner'>Dinner</option>
-		</select>
+	<div class="container">
+		<div class='row' style="height:2vh"></div>
+		<div class="row" style="height:4vh">
+			<div class="col-2 label6">
+				Day:
+			</div>
+			<div class="col-3">
+				<select class="select-css" id='changew' name='week' onchange="changeweek()">
+					<option value='all' selected>Any</option>
+					<option value='sunday'>Sun</option>
+					<option value='monday'>Mon</option>
+					<option value='tuesday'>Tue</option>
+					<option value='wednesday'>Wed</option>
+					<option value='thursday'>Thu</option>
+					<option value='friday'>Fri</option>
+					<option value='saturday'>Sat</option>
+				</select>
+			</div>
+			<div class="col-3 label6">
+				Meal:
+			</div>
+			<div class="col-4">
+				<select class="select-css" id='changed' name='week' onchange="changedinner()">
+					<option value='all' selected>Any</option>
+					<option value='lunch'>Lunch</option>
+					<option value='dinner'>Dinner</option>
+				</select>
+			</div>
+		</div>
+		<div class="row" style="height:2vh"></div>
+		<div class="row" style="height:5vh">
+			<button id="toggleFilter" onclick="toggleFilter()">Filter..</button>
+		</div>
+		<div class="row" style="height:2vh"></div>
+		<span id="filter">
+			<div class="row triple justify-content-center">
+				<div class="col-6">
+					<div class="row justify-content-center">
+						<div class="col-8 label2">
+							Fish
+						</div>
+						<div class="col-4 align-self-center">
+							<label class="switch">
+								<input type="checkbox" name = "fish" id="chk_info6"  checked="checked">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class='row' style="height:1vh"></div>
+					<div class="row justify-content-center">
+						<div class="col-8 label2">
+							Dairy
+						</div>
+						<div class="col-4 align-self-center">
+							<label class="switch">
+								<input type="checkbox" name = "dairy" id="chk_info4" checked="checked">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class='row' style="height:1vh"></div>
+					<div class="row justify-content-center">
+						<div class="col-8 label2">
+							Egg
+						</div>
+						<div class="col-4 align-self-center">
+							<label class="switch">
+								<input type="checkbox" name = "egg" id="chk_info5" checked="checked">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-4 label3">
+					Animal-derived products
+				</div>
+				<div class="col-2 align-self-center">
+					<label class="switch">
+						<input type="checkbox" name = "animalProducts" id="chk_info2" checked="checked">
+						<span class="slider round"></span>
+					</label>
+				</div>
+			</div>
+			<div class='row' style="height:1vh"></div>
+			<div class="row justify-content-center">
+				<div class="col-4 label3">
+					Chicken
+				</div>
+				<div class="col-2 align-self-center">
+					<label class="switch">
+						<input type="checkbox" name = "chicken" id="chk_info3" checked="checked">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="col-4 label3">
+					All
+				</div>
+				<div class="col-2 align-self-center">
+					<label class="switch">
+						<input type="checkbox" name = "all" onchange="selectAll(this.checked)" id="chk_info1" checked="checked">
+						<span class="slider round"></span>
+					</label>
+				</div>
+			</div>
+		</span>
+		<div class='row' style="height:2vh"></div>
+		<div id='tableappend' class="row" ></div>
+		<div class='row' style="height:1vh"></div>
+		<div class='row justify-content-end' style="height:6vh">
+			<button id='create'>Create</button>
+		</div>
 	</div>
-	<div>
-		<input type="checkbox" name = "all" onchange="selectAll(this.checked)" id="chk_info1" checked="checked">all
-		<input type="checkbox" name = "animalProducts" id="chk_info2" checked="checked">animalProducts
-		<input type="checkbox" name = "chicken" id="chk_info3" checked="checked">chicken
-		<input type="checkbox" name = "dairy" id="chk_info4" checked="checked">dairy
-		<input type="checkbox" name = "egg" id="chk_info5" checked="checked">egg
-		<input type="checkbox" name = "fish" id="chk_info6"  checked="checked">fish
-	</div>
-
-
-	<div id='tableappend'></div>
-
-
-	<div id = 'bu'>
-		<button id = 'create'>Create One</button>
-</body>
 </html>
