@@ -1,5 +1,3 @@
-$("#header").load("../header.html");
-
 var firebaseConfig = {
   apiKey: "AIzaSyC4gYItaWV0Qilxl3k8CBwgjpIdKQs_WG8",
   authDomain: "lettucegoeat.firebaseapp.com",
@@ -33,10 +31,13 @@ function animateCSS(element, animationName, callback) {
 
 $(document).ready(function() {
 
-  $("header").load("header.html");
   let viewheight = $(window).height();
   let viewwidth = $(window).width();
   let viewport = document.querySelector("meta[name=viewport]");
   viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=0.4," + "maximum-scale=0.4, minimum-scale=0.4, user-scalable=no, minimal-ui");
+
+  $("header").load("../header.html", ()=>{
+    setup()
+  })
 
 });

@@ -17,12 +17,12 @@ var daysOfTheWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"
 var daysOfTheWeekSmall = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
 
 
-$( document ).ready(function() {
+function setup() {
+  $("#headerSchedule").addClass("selected")
   fillDatesInOrder()
   getUser()
   getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
-
-})
+}
 
 function getUser(){
   var obj = Cookies.getJSON("account")
