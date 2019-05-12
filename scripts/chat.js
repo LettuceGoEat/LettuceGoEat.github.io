@@ -87,12 +87,20 @@ function findAccount(){
 function addComment(comment){
     var owner = comment["owner"]
     //create username
-    var bubbleClass = owner == userKey ? "leftBubble" : "rightBubble"
-    var userClass = owner == userKey ? "owner" : "other"
+    var isOwner = owner == userKey
+    var bubbleClass = isOwner ? "leftBubble" : "rightBubble"
+    var userClass = isOwner ? "owner" : "other"
     var giveInfoOnUsernameButton =$('<button/>').attr({
         class: "jumpToInfoUserButton "+ userClass,
 
-    }).html(user["username"])
+    }).html(groupMembers[owner]["username"])
+    giveInfoOnUsernameButton.on("click" , function() {
+        $('#showInfoButton').attr("hidden","true")
+        $('#hideInfoButton').removeAttr("hidden")
+        displayInfoForUser(groupMembers[owner])
+        seeMembers()
+     })
+
 
     let commentText =$('<div/>').attr({
         class: "row bubble "+bubbleClass ,
@@ -103,8 +111,8 @@ function addComment(comment){
     })
     let color = getColor(owner)
     let icon =$('<div/>').attr({
-        class: "col",
-        style:("background-color:" + color),
+        class: "col iconDiv",
+
     })
     let notIcon =$('<div/>').attr({
         class: "col",
@@ -127,8 +135,14 @@ function addComment(comment){
     notIcon.append(username)
     notIcon.append(commentWrap)
 
-    entryRow.append(icon)
-    entryRow.append(notIcon)
+    if(isOwner){
+        entryRow.append(icon)
+        entryRow.append(notIcon)
+    } else {
+        entryRow.append(notIcon)
+        entryRow.append(icon)
+    }
+
 
     container.append(entryRow)
     //maybe add a remove?
@@ -183,7 +197,7 @@ function noSeeMembers(){
 
 function initInfo(){
     let usersInfo = $('#usersInfo')
-    let info = $('.info')
+
     let users = $('.users')
 
     jQuery.each(groupMembers, (index,member) => {
@@ -200,6 +214,47 @@ function initInfo(){
         nameRow.append(nameCol)
         users.append(nameRow)
 
+        //create onclick
+        name.on('click', function() {
+          displayInfoForUser(member)
+
+       })
+
     })
+}
+
+function displayInfoForUser(member){
+    $(".hello").remove()
+    var table = $('.info')
+
+    addInfo(member["username"], table)
+    addInfo("Eats:",table)
+    var prefs = Object.entries(member["food"])
+    const len = prefs.length
+    console.log()
+    for(var i = 1; i<len;++i){
+        if(prefs[i][1]){
+            if(i == 1){
+                addInfo("animal products", table)
+            } else {
+                addInfo(prefs[i][0], table)
+            }
+
+        }
+    }
+
+
+
+}
+
+function addInfo(info,table){
+    let nameRow = $('<div/>').attr({
+        class: "row hello",
+        })
+    let nameCol = $('<div/>').attr({
+        class: "col",
+    }).html(info)
+    nameRow.append(nameCol)
+    table.append(nameRow)
 }
 

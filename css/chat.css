@@ -12,7 +12,6 @@ footer{
 }
 
 .bubble {
-  display: inline-block;
   border-radius: 15px;
   background: #00bfb6;
   color: #fff;
@@ -21,6 +20,11 @@ footer{
   font-weight: 900;
   font-family: arial;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 70%;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 /* speech bubble 13 */
@@ -74,3 +78,9 @@ footer{
   cursor: pointer;
   float:right;
 }
+
+.iconDiv{
+  width: 10%;
+}
+
+
