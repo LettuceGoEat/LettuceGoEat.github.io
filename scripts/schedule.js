@@ -36,8 +36,12 @@ function getDinners(){
         var keys = Object.keys(obj)
         //not secure but this isn't the point of this project
         if(obj != null){
-          userDinners = Object.values(obj).filter( elem => {
-            return Object.values(elem["members"]).includes(userKey)
+          userDinners = Object.entries(obj).filter( elem => {
+            return Object.values(elem[1]["members"]).includes(userKey)
+          }).map( elem => {
+              dinner = elem[1]
+              dinner["key"] = elem[0]
+              return dinner
           })
 
           /* current timestamp for removind old dinners*/
