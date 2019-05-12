@@ -3,12 +3,11 @@
 
 firebase.database().ref('/groups/').orderByChild('/order/').once("value", function(datasnapshot){
 	var compare = 0
+	var user = Cookies.getJSON("account")
 	firebase.database().ref('/users/'+user["key"]+'/joinedtime/').once("value", function(datasnapshot2){
 		var checkusertime = datasnapshot2.val()
-	
 		datasnapshot.forEach((child)=>{
 			x = child.val()
-			var user = Cookies.getJSON("account")
 			var checkinclude = 0;
 			var checknumbermember = 0;
 			for(key in x.members){
@@ -162,7 +161,12 @@ function seedetail(t){
 	})
 	bbb.onclick = function(){
 		var newKey = firebase.database().ref('groups/'+t.className+'/members').push()
+		
 		var user = Cookies.getJSON("account")
+		var secondKey = firebase.database().ref('users/'+user["key"]+'/joinedtime').push()
+		firebase.database().ref('groups/'+t.className+'/order').once("value", function(datasnapshot){
+			secondKey.set(datasnapshot.val())
+		})
 		newKey.set(user["key"]).then(function(){
 			window.location.href = "schedule.html"
 		})
