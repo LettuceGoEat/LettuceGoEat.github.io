@@ -2,12 +2,14 @@
 var user
 var userKey
 var groupKey
-var groupMembers
+var groupMembers = {}
 var groupInfo
 
 function setup() {
-    $("#headerSchedule").addClass("selected")
+
     findAccount()
+    getMembers()
+    $("#headerSchedule").addClass("selected")
     readFromDatabase()
     bindEvents()
 }
@@ -22,6 +24,24 @@ function writeToDatabase(comment, owner) {
 
 function eraseTable() {
     $(".entry").remove()
+}
+
+function getMembers(){
+    var members = groupInfo["members"]
+    members = Object.values(members)
+    members = jQuery.map(Object.values(members), (memKey,index) =>{
+            return firebase.database().ref('/users/' + memKey ).once('value', function(snapshot) {
+                var myValue = snapshot.val()
+                if(myValue != null){
+                    groupMembers[memKey] = myValue
+                }
+
+            });
+
+        })
+    Promise.all(members).then( () => initInfo())
+
+
 }
 function readFromDatabase() {
   return firebase.database().ref('/chats/' + groupKey + '/comments/').on('value', function(snapshot) {
@@ -133,18 +153,14 @@ function bindEvents() {
     let hideMembers = $('#hideInfoButton')
 
     showMembers.on("click" , function() {
-        console.log("start")
         hideMembers.removeAttr("hidden")
         showMembers.attr("hidden","true")
         seeMembers()
-        console.log("done")
      })
     hideMembers.on("click" , function() {
-        console.log("start")
         showMembers.removeAttr("hidden")
         hideMembers.attr("hidden","true")
         noSeeMembers()
-        console.log("done")
     })
 }
 
@@ -154,9 +170,7 @@ function getColor(owner){
 
 function seeMembers(){
     let usersInfo = $('#usersInfo')
-    console.log(usersInfo.prop("hidden"))
     usersInfo.removeAttr("hidden")
-    console.log(usersInfo.prop("hidden"))
     usersInfo.css( { display: "block" } )
 }
 
@@ -168,6 +182,24 @@ function noSeeMembers(){
 }
 
 function initInfo(){
+    let usersInfo = $('#usersInfo')
+    let info = $('.info')
+    let users = $('.users')
 
+    jQuery.each(groupMembers, (index,member) => {
+        let nameRow = $('<div/>').attr({
+            class: "row",
+        })
+        let nameCol = $('<div/>').attr({
+            class: "col",
+        })
+        let name = $('<button/>').attr({
+            class: "nameButton",
+        }).html(member["username"])
+        nameCol.append(name)
+        nameRow.append(nameCol)
+        users.append(nameRow)
+
+    })
 }
 
