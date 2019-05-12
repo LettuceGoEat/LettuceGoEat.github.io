@@ -120,3 +120,13 @@ button.selected {
   box-shadow: 0px 14px 10px black;
 }
 
+.topRect{
+  border-top-left-radius : 32px;
+  border-top-right-radius : 32px;
+}
+
+.botRect{
+  border-bottom-right-radius : 32px;
+  border-bottom-left-radius : 32px;
+}
+
