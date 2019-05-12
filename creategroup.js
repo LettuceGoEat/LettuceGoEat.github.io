@@ -72,7 +72,7 @@ dinner.on('click', () => {
 })
 
 next.on('click', () => {
-	console.log("create")
+
 	if (title.val() == "") {
 		animateCSS('#title', 'shake')
 	} else if (week == 7) {
@@ -94,6 +94,7 @@ next.on('click', () => {
 		newKey.child('week').set(week)
 		newKey.child('time').set(time)
 		newKey.child('chat')
+		newKey.child('key').set(newKey)
 		var secondKey = firebase.database().ref('/users/'+user["key"]).child('joinedtime').push();
 		if(time == 0){
 			newKey.child('order').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
