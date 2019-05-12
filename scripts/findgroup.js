@@ -263,7 +263,6 @@ function seedetail(t) {
 	})
 }
 var cg = document.getElementById('create')
-var autof = document.getElementById('autofind')
 
 cg.onclick = function() {
 	window.location.href = "creategroup.html"
