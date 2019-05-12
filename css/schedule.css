@@ -21,7 +21,7 @@ header{
 }
 
 .row {
-  height: 6vh;
+  height: 5.5vh;
 }
 .title{
     height: 2vh;
@@ -54,7 +54,7 @@ header{
 }
 .infoRow{
     height: 4.5vh;
-    font-size: 2em;
+    font-size: 2.3em;
     font-weight: 600;
     border: none;
     text-align: left;
@@ -95,7 +95,7 @@ button.selected {
 }
 
 .chatButton {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 700;
   text-align: center;
   float: right;
@@ -105,15 +105,15 @@ button.selected {
   border-width: 5px;
   border-color: black;
   color: #fff;
-  top: 10%;
+  margin-top: 5px;
   left:80%;
   margin-right: 10%;
   width: 38%;
-  height: 80%;
+  height: 70%;
   box-shadow: 0px 14px 10px black;
 }
 .unjoinButton {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 700;
   text-align: center;
   float: right;
@@ -123,11 +123,11 @@ button.selected {
   border-width: 5px;
   border-color: black;
   color: #fff;
-  top: 10%;
+  margin-top: 5px;
   left:80%;
   margin-right: 10%;
   width: 38%;
-  height: 80%;
+  height: 70%;
   box-shadow: 0px 14px 10px black;
 }
 
