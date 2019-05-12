@@ -33,9 +33,10 @@ function getUser() {
 function getDinners() {
   return firebase.database().ref('groups').once("value", (snapshot) => {
     var obj = snapshot.val()
-    var keys = Object.keys(obj)
+
     //not secure but this isn't the point of this project
     if (obj != null) {
+      var keys = Object.keys(obj)
       userDinners = Object.entries(obj).filter(elem => {
         return Object.values(elem[1]["members"]).includes(userKey)
       }).map(elem => {
@@ -121,6 +122,8 @@ function displayInfoForDinner(dinner) {
 							firebase.database().ref('groups/'+dinner.key+'/members/'+savedata2).remove()
 						}
 					 }).then(() => {
+              userDinners = []
+              resetInfo()
               $(".leftRect").children().remove()
               $(".rightRect").children().remove()
               getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
@@ -165,9 +168,6 @@ function displayDays() {
       giveInfoButton.addClass("selected")
 
     })
-    console.log($(days[dinner["time"]][getIndexFromDay(dinner["week"])]))
-    console.log(dinner["time"])
-    console.log(getIndexFromDay(dinner["week"]))
     $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).append(giveInfoButton)
   }
 }

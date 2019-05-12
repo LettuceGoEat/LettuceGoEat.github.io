@@ -124,7 +124,7 @@ function addComment(comment){
     let icon =$('<div/>').attr({
         class: "col-1 iconDiv",
 
-    }).addClass("fas fa-user").css("background-color", getColor(owner)).css("background-blend-mode", "multiply")
+    }).addClass("fas fa-user").css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "green")
 
     var container = $(".chat")
 
