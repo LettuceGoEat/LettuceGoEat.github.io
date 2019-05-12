@@ -5,18 +5,22 @@
     <meta charset="utf-8" />
     <title></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<!-- Latest compiled JavaScript -->
-	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-	<script src="scripts/firebaseInit.js"></script>
-	<link rel="stylesheet" href="findgroup.css">
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=0.4, min-scale=0.4, max-scale=0.4 user-scalable=no">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+		<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<script src="scripts/firebaseInit.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=0.4, min-scale=0.4, max-scale=0.4 user-scalable=no">
+
+		<link rel="stylesheet" href="css/findgroup.css">
+		<script src="scripts/findgroup.js"></script>
 
 </head>
 <header></header>
@@ -31,7 +35,7 @@
 			<td id='position'>Daejeon</td>
 		</tr>
 	</table>
-	
+
 	<div>
 		<select id = 'changew' name='week' onchange="changeweek()">
 			<option value='all' selected>all</option>
@@ -60,10 +64,9 @@
 
 
 	<div id='tableappend'></div>
-	
+
 
 	<div id = 'bu'>
 		<button id = 'create'>Create One</button>
-	<script src="findgroup.js"></script>
 </body>
 </html>
