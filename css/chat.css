@@ -67,7 +67,7 @@ footer{
    position: fixed;
   display: block;
   left: 70%;
-  background-color: black;
+  background-color: grey;
   width: 30%;
   height: 50%;
   z-index: 2;
