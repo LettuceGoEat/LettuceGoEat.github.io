@@ -116,17 +116,58 @@ function addComment(comment){
 }
 
 function bindEvents() {
-  let inputBox = $('#myInput')
-  let submitBtn = $('#submitBtn')
-  submitBtn.on("click" , function() {
-    var myValue = inputBox.val()
-    if(myValue != '') {
-      writeToDatabase(myValue, userKey);
-      inputBox.val('')
-    }
-  })
+
+    //bind input and submit
+    let inputBox = $('#myInput')
+    let submitBtn = $('#submitBtn')
+
+    submitBtn.on("click" , function() {
+        var myValue = inputBox.val()
+        if(myValue != '') {
+          writeToDatabase(myValue, userKey);
+          inputBox.val('')
+        }
+    })
+    //bind show and hide members, and usersInfo
+    let showMembers = $('#showInfoButton')
+    let hideMembers = $('#hideInfoButton')
+
+    showMembers.on("click" , function() {
+        console.log("start")
+        hideMembers.removeAttr("hidden")
+        showMembers.attr("hidden","true")
+        seeMembers()
+        console.log("done")
+     })
+    hideMembers.on("click" , function() {
+        console.log("start")
+        showMembers.removeAttr("hidden")
+        hideMembers.attr("hidden","true")
+        noSeeMembers()
+        console.log("done")
+    })
 }
 
 function getColor(owner){
     return (owner == userKey ? "purple" : "red")
 }
+
+function seeMembers(){
+    let usersInfo = $('#usersInfo')
+    console.log(usersInfo.prop("hidden"))
+    usersInfo.removeAttr("hidden")
+    console.log(usersInfo.prop("hidden"))
+    usersInfo.css( { display: "block" } )
+}
+
+function noSeeMembers(){
+    let usersInfo = $('#usersInfo')
+    usersInfo.attr("hidden","true")
+    usersInfo.css( { display: "none" } )
+
+}
+
+function initInfo(){
+
+}
+
