@@ -39,6 +39,9 @@ header{
 }
 
 .rectangle{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
     height: 100%;
 }
 
@@ -60,6 +63,9 @@ header{
     height: 4vh;
 }
 .info{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
   height: 100%;
     background-color: hsl(184, 48%, 44%);
 }
@@ -72,7 +78,6 @@ button {
   border-width: 5px;
   border-color: black;
   color: #0;
-  top: 10%;
   width: 70%;
   height: 75%;
   box-shadow: 0px 10px 8px black;
@@ -83,6 +88,10 @@ button.selected {
   outline: none;
   box-shadow: none;
   transform: translateY(10px);
+}
+
+.scheduleButtons {
+  margin-top: 2%;
 }
 
 .chatButton {
