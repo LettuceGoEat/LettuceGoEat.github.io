@@ -93,6 +93,7 @@ next.on('click', () => {
 		newKey.child('title').set(title.val())
 		newKey.child('week').set(week)
 		newKey.child('time').set(time)
+		newKey.child('chat')
 		var secondKey = firebase.database().ref('/users/'+user["key"]).child('joinedtime').push();
 		if(time == 0){
 			newKey.child('order').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
@@ -105,7 +106,7 @@ next.on('click', () => {
 		firebase.database().ref('/users/'+user["key"]+'/food.').once("value", function(datasnapshot){
 			newKey.child('food').set(datasnapshot.val()])
 		})
-		
+
 		newKey.child('mylocation').set(mylocation.val())
 		newKey.child('groupsize').set(groupsize.val())
 		newKey.child('members').child('mem1').set(user["key"]).then(function() {

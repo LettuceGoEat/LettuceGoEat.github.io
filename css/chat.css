@@ -1,3 +1,8 @@
+header{
+    font-size: 5em;
+}
+
+
 .box3 {
   width: 300px;
   margin: 50px auto;
@@ -11,7 +16,6 @@
   position: relative;
 }
 
-
 /* speech bubble 13 */
 
 .sb13:before {
@@ -24,5 +28,20 @@
   border-top: 15px solid #00bfb6;
   border-bottom: 15px solid transparent;
   right: -16px;
+  top: 0px;
+}
+
+/* speech bubble 14 */
+
+.sb14:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid #00bfb6;
+  border-top: 15px solid #00bfb6;
+  border-bottom: 15px solid transparent;
+  left: -16px;
   top: 0px;
 }
