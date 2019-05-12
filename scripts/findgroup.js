@@ -137,6 +137,7 @@ function closedetail(t) {
 		t.deleteRow(1)
 		t.deleteRow(1)
 		t.deleteRow(1)
+		t.deleteRow(1)
 		var row2 = t.insertRow(1);
 		var row3 = t.insertRow(2);
 		var cell21 = row2.insertCell(0);
@@ -196,21 +197,17 @@ function seedetail(t) {
 		var ro4 = t.insertRow(6)
 		var ro5 = t.insertRow(7)
 		var ro6 = t.insertRow(8)
+		var ro7 = t.insertRow(9)
 		var c1 = ro1.insertCell(0)
 		var c2 = ro2.insertCell(0)
 		var c3 = ro3.insertCell(0)
 		var c4 = ro4.insertCell(0)
 		var c5 = ro5.insertCell(0)
-		var c61 = ro6.insertCell(0)
-		var c62 = ro6.insertCell(1)
-		c1.colSpan = 2;
-		c2.colSpan = 2;
-		c3.colSpan = 2;
-		c4.colSpan = 2;
-		c5.colSpan = 2;
+		var c6 = ro6.insertCell(0)
+		var c7 = ro7.insertCell(0)
 		var bbb = document.createElement('button')
 		bbb.innerHTML = "Join";
-		c62.appendChild(bbb)
+		c7.appendChild(bbb)
 		c1.innerHTML = x.title;
 		c2.innerHTML = " "
 		c3.innerHTML = "Day/Time : " + t.rows[0].cells[0].innerHTML + " for " + t.rows[2].cells[0].innerHTML;
@@ -241,6 +238,7 @@ function seedetail(t) {
 				c5.innerHTML += " None"
 			}
 		}
+		c6.innerHTML = "loaction : "+x.mylocation
 		t.deleteRow(1)
 		t.deleteRow(1)
 		t.addEventListener("click", function() {
