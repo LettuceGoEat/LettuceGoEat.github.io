@@ -167,6 +167,8 @@ input:checked + .slider:before {
 
 
 /*-----------------------------------------------------------------------------------------------------------*/
+/* Select */
+
 .select-css {
 
 	text-align: center;
@@ -206,7 +208,7 @@ input:checked + .slider:before {
 }
 .select-css option {
 	text-align: center;
-	font-size: 1em;
+	font-size: 0.4em;
 	font-weight:500;
 	background-color: #B8EA91;
 }
