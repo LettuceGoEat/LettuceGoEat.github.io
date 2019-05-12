@@ -117,13 +117,14 @@ function displayInfoForDinner(dinner){
 							firebase.database().ref('groups/'+dinner.key).remove()
 						}
 						else{
-							firebase.database().ref('groups/'+dinner.key+'/members'+savedata2).remove()
+							firebase.database().ref('groups/'+dinner.key+'/members/'+savedata2).remove()
 						}
 					 })
 					
 			   })
-		   }).then(function(){
-				setup()
+		   }).then(() => {
+				console.log("hello")
+				getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
 		   })
 		  
 		  
@@ -187,7 +188,7 @@ function displayDefaultDinnerInfo(){
      displayInfoForDinner(userDinners[0])
      $(".info1").html("Information on your next meal:")
   } else {
-     $(".info1").html("You currently have no dinner scheduled. ")
+     $(".info1").html("No dinner scheduled. ")
      $(".info2").html("Find a group you like and join it! ")
 
   }
