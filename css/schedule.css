@@ -108,7 +108,25 @@ button.selected {
   top: 10%;
   left:80%;
   margin-right: 10%;
-  width: 30%;
+  width: 38%;
+  height: 80%;
+  box-shadow: 0px 14px 10px black;
+}
+.unjoinButton {
+  font-size: 2em;
+  font-weight: 700;
+  text-align: center;
+  float: right;
+  padding-bottom: 5%;
+  background-color: black;
+  border-radius: 50px;
+  border-width: 5px;
+  border-color: black;
+  color: #fff;
+  top: 10%;
+  left:80%;
+  margin-right: 10%;
+  width: 38%;
   height: 80%;
   box-shadow: 0px 14px 10px black;
 }

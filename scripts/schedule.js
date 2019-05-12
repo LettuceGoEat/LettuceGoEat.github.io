@@ -68,6 +68,10 @@ function displayInfoForDinner(dinner){
     let goToChatButton =$('<button/>').attr({
         class: "chatButton"
     }).html("Chat")
+	//create unjoinbutton
+	let unjoinButton =$('<button/>').attr({
+        class: "unjoinButton"
+    }).html("Leave")
     //add cookie creater and go to chat function
     goToChatButton.on('click', function() {
           //get cookie
@@ -79,8 +83,55 @@ function displayInfoForDinner(dinner){
           window.location.href = "chat.html"
 
        })
+	   unjoinButton.on('click', function(){ 
+	   	   var obj = Cookies.getJSON("account")
+		   firebase.database().ref('groups/'+dinner.key+'/order').once("value", function(akey){
+			   firebase.database().ref('groups/'+dinner.key+'/members').once("value", function(bkey){
+					firebase.database().ref('users/'+obj["key"]+'/joinedtime').once("value", function(ckey){
+						var savedata1
+						var savelength1 = 0;
+						for(key in ckey.val()){
+							savelength1 += 1
+							//remove the joinedtime from the users info
+							if(akey.val()==ckey.val()[key]){
+								savedata1 = key;
+							}
+							
+						}
+						if(savelength1 == 1){
+							firebase.database().ref('users/'+obj["key"]+'/joinedtime').remove()
+						}
+						else{
+							firebase.database().ref('users/'+obj["key"]+'/joinedtime/'+savedata1).remove()
+						}
+						var savedata2
+						var savelength2 = 0
+						for(key in bkey.val()){
+							//remove from the groups member
+							savelength2 += 1
+							if(bkey.val()[key]==obj["key"]){
+								savedata2 = key
+							}	
+						}
+						if(savelength2 == 1){
+							firebase.database().ref('groups/'+dinner.key).remove()
+						}
+						else{
+							firebase.database().ref('groups/'+dinner.key+'/members'+savedata2).remove()
+						}
+					 })
+					
+			   })
+		   }).then(function(){
+				setup()
+		   })
+		  
+		  
+	   })
+
     //append function to the dinner information
-    $(".info5").append(goToChatButton)
+    $(".info6").append(goToChatButton)
+	$(".info6").append(unjoinButton)
   }
 }
 
