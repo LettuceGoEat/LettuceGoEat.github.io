@@ -75,58 +75,61 @@ function displayInfoForDinner(dinner) {
     }).html("Leave")
     //add cookie creater and go to chat function
     goToChatButton.on('click', function() {
-      //get cookie
-      var obj = Cookies.getJSON("account")
-      //set cookie to add groupChat dinner
-      obj["groupChat"] = dinner
-      Cookies.set("account", obj)
-      //go to chat page of selected dinner
-      window.location.href = "chat.html"
+          //get cookie
+          var obj = Cookies.getJSON("account")
+          //set cookie to add groupChat dinner
+          obj["groupChat"] = dinner
+          Cookies.set("account",obj)
+          //go to chat page of selected dinner
+          window.location.href = "chat.html"
 
-    })
-    unjoinButton.on('click', function() {
-      var obj = Cookies.getJSON("account")
-      firebase.database().ref('groups/' + dinner.key + '/order').once("value", function(akey) {
-        firebase.database().ref('groups/' + dinner.key + '/members').once("value", function(bkey) {
-          firebase.database().ref('users/' + obj["key"] + '/joinedtime').once("value", function(ckey) {
-            var savedata1
-            var savelength1 = 0;
-            for (key in ckey.val()) {
-              savelength1 += 1
-              //remove the joinedtime from the users info
-              if (akey.val() == ckey.val()[key]) {
-                savedata1 = key;
-              }
-
-            }
-            if (savelength1 == 1) {
-              firebase.database().ref('users/' + obj["key"] + '/joinedtime').remove()
-            } else {
-              firebase.database().ref('users/' + obj["key"] + '/joinedtime/' + savedata1).remove()
-            }
-            var savedata2
-            var savelength2 = 0
-            for (key in bkey.val()) {
-              //remove from the groups member
-              savelength2 += 1
-              if (bkey.val()[key] == obj["key"]) {
-                savedata2 = key
-              }
-            }
-            if (savelength2 == 1) {
-              firebase.database().ref('groups/' + dinner.key).remove()
-            } else {
-              firebase.database().ref('groups/' + dinner.key + '/members' + savedata2).remove()
-            }
-          })
-
-        })
-      }).then(function() {
-        setup()
-      })
-
-
-    })
+       })
+	   unjoinButton.on('click', function(){ 
+	   	   var obj = Cookies.getJSON("account")
+		   firebase.database().ref('groups/'+dinner.key+'/order').once("value", function(akey){
+			   firebase.database().ref('groups/'+dinner.key+'/members').once("value", function(bkey){
+					firebase.database().ref('users/'+obj["key"]+'/joinedtime').once("value", function(ckey){
+						var savedata1
+						var savelength1 = 0;
+						for(key in ckey.val()){
+							savelength1 += 1
+							//remove the joinedtime from the users info
+							if(akey.val()==ckey.val()[key]){
+								savedata1 = key;
+							}
+							
+						}
+						if(savelength1 == 1){
+							firebase.database().ref('users/'+obj["key"]+'/joinedtime').remove()
+						}
+						else{
+							firebase.database().ref('users/'+obj["key"]+'/joinedtime/'+savedata1).remove()
+						}
+						var savedata2
+						var savelength2 = 0
+						for(key in bkey.val()){
+							//remove from the groups member
+							savelength2 += 1
+							if(bkey.val()[key]==obj["key"]){
+								savedata2 = key
+							}	
+						}
+						if(savelength2 == 1){
+							firebase.database().ref('groups/'+dinner.key).remove()
+						}
+						else{
+							firebase.database().ref('groups/'+dinner.key+'/members/'+savedata2).remove()
+						}
+					 })
+					
+			   })
+		   }).then(() => {
+				console.log("hello")
+				getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
+		   })
+		  
+		  
+	   })
 
     //append function to the dinner information
     $(".info6").append(goToChatButton)
@@ -187,8 +190,13 @@ function displayDefaultDinnerInfo() {
     displayInfoForDinner(userDinners[0])
     $(".info1").html("Your next meal:")
   } else {
+<<<<<<< HEAD
+     $(".info1").html("No dinner scheduled. ")
+     $(".info2").html("Find a group you like and join it! ")
+=======
     $(".info1").html("You currently have no dinner scheduled. ")
     $(".info2").html("Find a group you like and join it! ")
+>>>>>>> a38d7c56628158de57fd69780936d4a9784b0d1c
 
   }
 
