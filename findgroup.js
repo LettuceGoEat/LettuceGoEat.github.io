@@ -1,6 +1,6 @@
 // JavaScript source code
 
-
+function showthedata(selected, wee, din){
 firebase.database().ref('/groups/').orderByChild('order').once("value", function(datasnapshot){
 	var compare = 0
 	var user = Cookies.getJSON("account")
@@ -14,14 +14,57 @@ firebase.database().ref('/groups/').orderByChild('order').once("value", function
 				checknumbermember = checknumbermember+1;
 			}
 			for(key in checkusertime){
-				if(checkusertime[key]==x.order)
-				checkinclude =1;
+				if(checkusertime[key]==x.order){
+					checkinclude =1;
+				}
 			}
 			if(checkinclude == 1){
-			
+			   
 			}
 			else if(checknumbermember>=x.groupsize.toInt){
 				
+			}
+			else if(din=="lunch" && x.time!=0){
+			
+			}
+			else if(din=="dinner" && x.time!=1){
+			
+			}
+			else if(wee=="sunday" && x.week!=0){
+			
+			}
+			else if(wee=="monday" && x.week!=1){
+			
+			}
+			else if(wee=="tuesday" && x.week!=2){
+			
+			}
+			else if(wee=="wednesday" && x.week!=3){
+			
+			}
+			else if(wee=="thursday" && x.week!=4){
+			
+			}
+			else if(wee=="friday" && x.week!=5){
+			
+			}
+			else if(wee=="saturday" && x.week!=6){
+			
+			}
+			else if(!selected.animalProducts && x.food.animalProducts){
+			
+			}
+			else if(!selected.chicken && x.food.chicken){
+			
+			}
+			else if(!selected.dairy && x.food.dairy){
+			
+			}
+			else if(!selected.egg && x.food.egg){
+			
+			}
+			else if(!selected.fish && x.food.fish){
+			
 			}
 			else{
 				var t = document.createElement('table');
@@ -65,6 +108,29 @@ firebase.database().ref('/groups/').orderByChild('order').once("value", function
 					cell31.innerHTML="dinner";
 				}
 				cell32.innerHTML = checknumbermember + "/" + x.groupsize
+				if(x.food.all == true){
+					cell33.innerHTML = "all";
+				}
+				else if(x.food.animalProducts == true){
+					cell33.innerHTML = "animalProducts...";
+				}
+				else if(x.food.chicken == true){
+					cell33.innerHTML = "chicken...";
+				}
+				else if(x.food.dairy == true){
+					cell33.innerHTML = "dairy...";
+				}
+				else if(x.food.egg == true){
+					cell33.innerHTML = "egg...";
+				}
+				else if(x.food.fish == true){
+					cell33.innerHTML = "fish...";
+				}
+				else{
+					cell33.innerHTML = "None"
+				}
+
+
 				cell34.innerHTML="...";
 				t.id='content'
 				cell11.id = 'contenttitle';
@@ -85,6 +151,8 @@ firebase.database().ref('/groups/').orderByChild('order').once("value", function
 		})
 	})
 })
+}
+
 function closedetail(t){
 	firebase.database().ref('groups/'+t.className).once("value", function(datasnapshot){
 		var keys = datasnapshot.val()
@@ -109,6 +177,32 @@ function closedetail(t){
 		else{
 			cell31.innerHTML="dinner";
 		}
+		var checknumbermember = 0;
+		for(key in keys.members){
+			checknumbermember = checknumbermember+1;
+		}
+		cell32.innerHTML = checknumbermember + "/" + keys.groupsize
+		if(keys.food.all == true){
+			cell33.innerHTML = "all";
+		}
+		else if(keys.food.animalProducts == true){
+			cell33.innerHTML = "animalProducts...";
+		}
+		else if(keys.food.chicken == true){
+			cell33.innerHTML = "chicken...";
+		}
+		else if(keys.food.dairy == true){
+			cell33.innerHTML = "dairy...";
+		}
+		else if(keys.food.egg == true){
+			cell33.innerHTML = "egg...";
+		}
+		else if(keys.food.fish == true){
+			cell33.innerHTML = "fish...";
+		}
+		else{
+			cell33.innerHTML = "None"
+		}
 		
 		cell34.innerHTML="...";
 		t.id='content'
@@ -126,57 +220,218 @@ function closedetail(t){
 }
 
 function seedetail(t){
-	var ro1 = t.insertRow(3)
-	var ro2 = t.insertRow(4)
-	var ro3 = t.insertRow(5)
-	var ro4 = t.insertRow(6)
-	var ro5 = t.insertRow(7)
-	var ro6 = t.insertRow(8)
-	var c1 = ro1.insertCell(0)
-	var c2 = ro2.insertCell(0)
-	var c3 = ro3.insertCell(0)
-	var c4 = ro4.insertCell(0)
-	var c5 = ro5.insertCell(0)
-	var c61 = ro6.insertCell(0)
-	var c62 = ro6.insertCell(1)
-	c1.colSpan = 2;
-	c2.colSpan = 2;
-	c3.colSpan = 2;
-	c4.colSpan = 2;
-	c5.colSpan = 2;
-	var bbb = document.createElement('button')
-	bbb.innerHTML = "Join";
-	c62.appendChild(bbb)
-	c1.innerHTML = t.rows[1].cells[0].innerHTML;
-	c2.innerHTML = ""
-	c3.innerHTML = "Day/Time : "+t.rows[0].cells[0].innerHTML + " for "+ t.rows[2].cells[0].innerHTML;
-	c4.innerHTML = "People : "+t.rows[2].cells[1].innerHTML;
-	c5.innerHTML = "Type(s) : "
-	t.deleteRow(1)
-	t.deleteRow(1)
-	t.addEventListener("click", function(){
-		closedetail(this)
-	}, {
-		once : true
+	firebase.database().ref('groups/'+t.className).once("value", function(datasnapshot){
+		var x=datasnapshot.val()
+		var ro1 = t.insertRow(3)
+		var ro2 = t.insertRow(4)
+		var ro3 = t.insertRow(5)
+		var ro4 = t.insertRow(6)
+		var ro5 = t.insertRow(7)
+		var ro6 = t.insertRow(8)
+		var c1 = ro1.insertCell(0)
+		var c2 = ro2.insertCell(0)
+		var c3 = ro3.insertCell(0)
+		var c4 = ro4.insertCell(0)
+		var c5 = ro5.insertCell(0)
+		var c61 = ro6.insertCell(0)
+		var c62 = ro6.insertCell(1)
+		c1.colSpan = 2;
+		c2.colSpan = 2;
+		c3.colSpan = 2;
+		c4.colSpan = 2;
+		c5.colSpan = 2;
+		var bbb = document.createElement('button')
+		bbb.innerHTML = "Join";
+		c62.appendChild(bbb)
+		c1.innerHTML = x.title;
+		c2.innerHTML = " "
+		c3.innerHTML = "Day/Time : "+t.rows[0].cells[0].innerHTML + " for "+ t.rows[2].cells[0].innerHTML;
+		c4.innerHTML = "People : "+t.rows[2].cells[1].innerHTML;
+		c5.innerHTML = "Type(s) : "
+		if(x.food.all == true){
+			c5.innerHTML = "Type(s) : all"
+		}
+		else{
+			c5.innerHTML = "Type(s) :"
+			if(x.food.animalProducts){
+			c5.innerHTML += " animalProducts";
+			}
+			if(x.food.chicken){
+				c5.innerHTML += " chicken";
+			}
+			if(x.food.dairy){
+				c5.innerHTML += " dairy";
+			}
+			if(x.food.egg){
+				c5.innerHTML += " egg";
+			}
+			if(x.food.fish){
+				c5.innerHTML += " fish";
+			}
+			if(x.food.animalProducts || x.food.chicken || x.food.dairy || x.food.egg || x.food.fish){
+				
+			}
+			else{
+				c5.innerHTML += " None"
+			}
+		}
+		t.deleteRow(1)
+		t.deleteRow(1)
+		t.addEventListener("click", function(){
+			closedetail(this)
+		}, {
+			once : true
+		})
+		bbb.onclick = function(){
+			var newKey = firebase.database().ref('groups/'+t.className+'/members').push()
+			
+			var user = Cookies.getJSON("account")
+			var secondKey = firebase.database().ref('users/'+user["key"]+'/joinedtime').push()
+			firebase.database().ref('groups/'+t.className+'/order').once("value", function(datasnapshot){
+				secondKey.set(datasnapshot.val())
+			})
+			newKey.set(user["key"]).then(function(){
+				window.location.href = "schedule.html"
+			})
+		}
 	})
-	bbb.onclick = function(){
-		var newKey = firebase.database().ref('groups/'+t.className+'/members').push()
-		
-		var user = Cookies.getJSON("account")
-		var secondKey = firebase.database().ref('users/'+user["key"]+'/joinedtime').push()
-		firebase.database().ref('groups/'+t.className+'/order').once("value", function(datasnapshot){
-			secondKey.set(datasnapshot.val())
-		})
-		newKey.set(user["key"]).then(function(){
-			window.location.href = "schedule.html"
-		})
-	}
 }
 var cg = document.getElementById('create')
 var autof = document.getElementById('autofind')
-autof.onclick = function(){
-	alert("preparing")
-}
+
 cg.onclick = function(){
 	window.location.href = "creategroup.html"
 }
+
+var acc = Cookies.getJSON('account')
+if(acc != null && acc.user != null && acc.user.food != null){
+	$('input[type=checkbox]').each(function(k, v) {
+		$(this).prop('checked', acc.user.food[v.name])
+	})
+	var selected = {}
+	$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+	});
+	var v;
+	for(i=0;i<changew.options.length;i++){
+		if(changew.options[i].selected == true){
+			v = changew.options[i].value;
+		}
+	}
+	var changed = document.getElementById('changed');
+	var vv;
+	for(i=0;i<changed.options.length;i++){
+		if(changed.options[i].selected == true){
+			vv = changed.options[i].value;
+		}
+	}
+	showthedata(selected, v, vv);
+}
+
+$("input[type=checkbox][name!=all]").on("click", (e)=>{
+		var val = $(e.target).prop('checked')
+		if(val == false){
+			$("input[name=all]").prop('checked', false)
+		}
+		var selected = {}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+		});
+		var v;
+		for(i=0;i<changew.options.length;i++){
+			if(changew.options[i].selected == true){
+				v = changew.options[i].value;
+			}
+		}
+		var changed = document.getElementById('changed');
+		var vv;
+		for(i=0;i<changed.options.length;i++){
+			if(changed.options[i].selected == true){
+				vv = changed.options[i].value;
+			}
+		}
+		var ta = document.getElementById('tableappend')
+		while (ta.firstChild) {
+			 ta.removeChild(ta.firstChild);
+		}
+		showthedata(selected, v, vv);
+})
+
+function selectAll(val) {
+	$("input[type=checkbox]").prop('checked', val)
+	var selected = {}
+	$('input[type=checkbox]').each(function(k, v) {
+		selected[v.name] = $(this).prop('checked')
+	});
+	var changew = document.getElementById('changew');
+	var v;
+	for(i=0;i<changew.options.length;i++){
+		if(changew.options[i].selected == true){
+			v = changew.options[i].value;
+		}
+	}
+	var changed = document.getElementById('changed');
+	var vv;
+	for(i=0;i<changed.options.length;i++){
+		if(changed.options[i].selected == true){
+			vv = changed.options[i].value;
+		}
+	}
+	var ta = document.getElementById('tableappend')
+	while (ta.firstChild) {
+		 ta.removeChild(ta.firstChild);
+	}
+	showthedata(selected, v, vv);
+}
+
+function changeweek(){
+	var changew = document.getElementById('changew');
+	var v;
+	for(i=0;i<changew.options.length;i++){
+		if(changew.options[i].selected == true){
+			v = changew.options[i].value;
+		}
+	}
+	var changed = document.getElementById('changed');
+	var vv;
+	for(i=0;i<changed.options.length;i++){
+		if(changed.options[i].selected == true){
+			vv = changed.options[i].value;
+		}
+	}
+	var selected = {}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+	});
+	var ta = document.getElementById('tableappend')
+	while (ta.firstChild) {
+		 ta.removeChild(ta.firstChild);
+	}
+	showthedata(selected, v, vv);
+}
+function changedinner(){
+	var changed = document.getElementById('changed');
+	var vv;
+	for(i=0;i<changed.options.length;i++){
+		if(changed.options[i].selected == true){
+			vv = changed.options[i].value;
+		}
+	}
+	var changew = document.getElementById('changew');
+	var v;
+	for(i=0;i<changew.options.length;i++){
+		if(changew.options[i].selected == true){
+			v = changew.options[i].value;
+		}
+	}
+	var selected = {}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+	});
+	var ta = document.getElementById('tableappend')
+	while (ta.firstChild) {
+		 ta.removeChild(ta.firstChild);
+	}
+	showthedata(selected, v, vv);
+}
+

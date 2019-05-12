@@ -83,35 +83,53 @@ next.on('click', () => {
 		animateCSS('#location', 'shake')
 	} else if (groupsize.val() == "") {
 		animateCSS('#groupsize', 'shake')
-	} else {
+	} 
+	else {
 		var user = Cookies.getJSON("account")
-
 		var newKey = firebase.database().ref('groups').push()
 		var date = new Date()
 		var day = 1000 * 60 * 60 * 24 //in milliseconds
-		newKey.child('timestamp').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
-		newKey.child('title').set(title.val())
-		newKey.child('week').set(week)
-		newKey.child('time').set(time)
-		newKey.child('chat')
-		//newKey.child('key').set(newKey)
 		var secondKey = firebase.database().ref('/users/'+user["key"]).child('joinedtime').push();
-		if(time == 0){
-			newKey.child('order').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
-			secondKey.set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
-		}
-		else{
-			newKey.child('order').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)+1)
-			secondKey.set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)+1)
-		}
-		firebase.database().ref('/users/'+user["key"]+'/food').once("value", function(datasnapshot){
-			newKey.child('food').set(datasnapshot.val())
-		})
-
-		newKey.child('mylocation').set(mylocation.val())
-		newKey.child('groupsize').set(groupsize.val())
-		newKey.child('members').child('mem1').set(user["key"]).then(function() {
-			window.location.href = "schedule.html"
+		firebase.database().ref('/users/'+user["key"]+'/joinedtime').once("value", function(datasn){
+			var checkusertime = true;
+			for(key in datasn.val()){
+				if(time ==0){
+					if(datasn.val()[key] ==date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)){
+						checkusertime = false
+					}
+				}
+				else{
+					if(datasn.val()[key] ==date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)+1){
+						checkusertime = false
+					}
+				}
+			}
+			if(checkusertime){
+				newKey.child('timestamp').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
+				newKey.child('title').set(title.val())
+				newKey.child('week').set(week)
+				newKey.child('time').set(time)
+				newKey.child('chat')
+				if(time == 0){
+					newKey.child('order').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
+					secondKey.set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7))
+				}
+				else{
+					newKey.child('order').set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)+1)
+					secondKey.set(date.getTime() - date.getTime() % (day) + day * ((week - date.getDay() + 7) % 7)+1)
+				}
+				firebase.database().ref('/users/'+user["key"]+'/food').once("value", function(datasnapshot){
+					newKey.child('food').set(datasnapshot.val())
+				})
+				newKey.child('mylocation').set(mylocation.val())
+				newKey.child('groupsize').set(groupsize.val())
+				newKey.child('members').child('mem1').set(user["key"]).then(function() {
+					window.location.href = "schedule.html"
+				})
+			}
+			else{
+				alert("you already have schedule in that time")
+			}
 		})
 	}
 })
