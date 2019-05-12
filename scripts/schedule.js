@@ -190,13 +190,10 @@ function displayDefaultDinnerInfo() {
     displayInfoForDinner(userDinners[0])
     $(".info1").html("Your next meal:")
   } else {
-<<<<<<< HEAD
+
      $(".info1").html("No dinner scheduled. ")
      $(".info2").html("Find a group you like and join it! ")
-=======
-    $(".info1").html("You currently have no dinner scheduled. ")
-    $(".info2").html("Find a group you like and join it! ")
->>>>>>> a38d7c56628158de57fd69780936d4a9784b0d1c
+
 
   }
 
