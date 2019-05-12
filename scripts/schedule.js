@@ -43,7 +43,7 @@ function getDinners(){
               dinner["key"] = elem[0]
               return dinner
           })
-
+          userDinners = userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
           /* current timestamp for removind old dinners*/
           var timeStamp = new Date().getTime()
           jQuery.each(userDinners,(index,elem) => elem["i"] = index)
@@ -131,7 +131,8 @@ function fillDatesInOrder(){
 
 function displayDefaultDinnerInfo(){
   if(userDinners.length > 0){
-     userDinners.sort( (elemA,elemB) => getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"])  == 0 ? getIndexFromDay(elemB["time"]) - elemA["time"] : getIndexFromDay(elemA["week"]) - getIndexFromDay(elemB["week"]))
+     var dinner = userDinners[0]
+     $( days[dinner["time"]][ getIndexFromDay(dinner["week"])] ).children("button").addClass("selected")
      displayInfoForDinner(userDinners[0])
      $(".info1").html("Information on your next dinner:")
   } else {
@@ -139,6 +140,7 @@ function displayDefaultDinnerInfo(){
      $(".info2").html("Find a group you like and join it! ")
 
   }
+
 
 
 }
