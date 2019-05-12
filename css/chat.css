@@ -80,7 +80,15 @@ footer{
 }
 
 .iconDiv{
-  width: 10%;
+  font-size: 5em;
+
 }
+
+.entry{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+
 
 

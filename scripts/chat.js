@@ -86,6 +86,7 @@ function findAccount(){
 
 function addComment(comment){
     var owner = comment["owner"]
+    var color = getColor(owner)
     //create username
     var isOwner = owner == userKey
     var bubbleClass = isOwner ? "leftBubble" : "rightBubble"
@@ -99,7 +100,7 @@ function addComment(comment){
         $('#hideInfoButton').removeAttr("hidden")
         displayInfoForUser(groupMembers[owner])
         seeMembers()
-     })
+     }).css("background-color", color)
 
 
     let commentText =$('<div/>').attr({
@@ -109,37 +110,35 @@ function addComment(comment){
     let entryRow =$('<div/>').attr({
         class: "row entry",
     })
-    let color = getColor(owner)
-    let icon =$('<div/>').attr({
-        class: "col iconDiv",
 
-    })
-    let notIcon =$('<div/>').attr({
-        class: "col",
-    })
 
-    let username =$('<div/>').attr({
-        class: "row",
+    let nameWrapper =$('<div/>').attr({
+        class: "col-2 nameDiv",
+
     })
 
     let commentWrap =$('<div/>').attr({
-        class: "row",
+        class: "col-9 commentDiv",
     })
+
+    let icon =$('<div/>').attr({
+        class: "col-1 iconDiv",
+
+    }).addClass("fas fa-user").css("background-color", getColor(owner)).css("background-blend-mode", "multiply")
 
     var container = $(".chat")
 
-    username.append(giveInfoOnUsernameButton)
+    nameWrapper.append(giveInfoOnUsernameButton)
 
     commentWrap.append(commentText)
 
-    notIcon.append(username)
-    notIcon.append(commentWrap)
-
     if(isOwner){
         entryRow.append(icon)
-        entryRow.append(notIcon)
+        entryRow.append(nameWrapper)
+        entryRow.append(commentWrap)
     } else {
-        entryRow.append(notIcon)
+        entryRow.append(commentWrap)
+        entryRow.append(nameWrapper)
         entryRow.append(icon)
     }
 

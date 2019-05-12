@@ -84,7 +84,7 @@ function displayInfoForDinner(dinner) {
           window.location.href = "chat.html"
 
        })
-	   unjoinButton.on('click', function(){ 
+	   unjoinButton.on('click', function(){
 	   	   var obj = Cookies.getJSON("account")
 		   firebase.database().ref('groups/'+dinner.key+'/order').once("value", function(akey){
 			   firebase.database().ref('groups/'+dinner.key+'/members').once("value", function(bkey){
@@ -97,7 +97,7 @@ function displayInfoForDinner(dinner) {
 							if(akey.val()==ckey.val()[key]){
 								savedata1 = key;
 							}
-							
+
 						}
 						if(savelength1 == 1){
 							firebase.database().ref('users/'+obj["key"]+'/joinedtime').remove()
@@ -112,7 +112,7 @@ function displayInfoForDinner(dinner) {
 							savelength2 += 1
 							if(bkey.val()[key]==obj["key"]){
 								savedata2 = key
-							}	
+							}
 						}
 						if(savelength2 == 1){
 							firebase.database().ref('groups/'+dinner.key).remove()
@@ -120,15 +120,16 @@ function displayInfoForDinner(dinner) {
 						else{
 							firebase.database().ref('groups/'+dinner.key+'/members/'+savedata2).remove()
 						}
-					 })
-					
+					 }).then(() => {
+              $(".leftRect").children().remove()
+              $(".rightRect").children().remove()
+              getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
+          })
+
 			   })
-		   }).then(() => {
-				console.log("hello")
-				getDinners().then(() => displayDays()).then( () => displayDefaultDinnerInfo())
 		   })
-		  
-		  
+
+
 	   })
 
     //append function to the dinner information
@@ -157,7 +158,6 @@ function displayDays() {
     let giveInfoButton = $('<button/>').attr({
       class: "scheduleButtons"
     }).html(lunchDinner)
-
     giveInfoButton.on('click', function() {
       displayInfoForDinner(dinner)
       $(".info1").html("Information on this dinner: ")
@@ -165,8 +165,10 @@ function displayDays() {
       giveInfoButton.addClass("selected")
 
     })
+    console.log($(days[dinner["time"]][getIndexFromDay(dinner["week"])]))
+    console.log(dinner["time"])
+    console.log(getIndexFromDay(dinner["week"]))
     $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).append(giveInfoButton)
-
   }
 }
 
@@ -207,7 +209,7 @@ function getDayFromIndex(index) {
 
 function getIndexFromDay(day) {
   var value = (day - dayOfWeek) % 7
-  return value > 0 ? value : value + 7
+  return value >= 0 ? value : value + 7
 }
 
 function resetInfo() {
