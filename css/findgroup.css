@@ -269,7 +269,7 @@ input:checked + .slider:before {
 	border : 1px solid black;
 }
 
-#contentgreen{
+.contentgreen{
 	padding-left : 2%;
 	background : #B5FD69;
 }
