@@ -12,18 +12,18 @@ footer{
 }
 
 .bubble {
+  margin-top: 2%;
   border-radius: 15px;
   background: #00bfb6;
   color: #fff;
   padding: 20px;
-  text-align: center;
+  text-align: left;
   font-weight: 900;
   font-family: arial;
   position: relative;
-  display: flex;
+  display: inline-block;
   flex-wrap: wrap;
-  max-width: 70%;
-  word-break: break-all;
+  max-width: 90%;
   word-wrap: break-word;
 }
 
@@ -38,8 +38,9 @@ footer{
   border-right: 15px solid transparent;
   border-top: 15px solid #00bfb6;
   border-bottom: 15px solid transparent;
-  right: -16px;
+  right: -1.5vh;
   top: 0px;
+
 }
 
 /* speech bubble 14 */
@@ -53,8 +54,24 @@ footer{
   border-right: 15px solid #00bfb6;
   border-top: 15px solid #00bfb6;
   border-bottom: 15px solid transparent;
-  left: -16px;
+  left: -1.5vh;
   top: 0px;
+}
+
+.leftBubble{
+
+}
+.rightBubble{
+  float: right;
+  margin-right: 1.5vh;
+}
+
+.jumpToInfoUserButton{
+  width: 100%;
+  text-align: left;
+  color: white;
+  border: none;
+  font-size: 2em;
 }
 
 .membersButton{
@@ -89,6 +106,13 @@ footer{
   margin-bottom: 1vh;
 }
 
+.nameDiv{
+  background-color: #34B532; /* needs to be same as body background */
+}
+
+.comment{
+  font-size: 2em;
+}
 
 
 

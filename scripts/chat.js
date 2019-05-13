@@ -9,11 +9,13 @@ function setup() {
 
     findAccount()
     getMembers()
-    $("#headerSchedule").addClass("selected")
-    readFromDatabase()
-    bindEvents()
 }
 
+function finishSetup(){
+    readFromDatabase()
+    bindEvents()
+    $("#headerSchedule").addClass("selected")
+}
 function writeToDatabase(comment, owner) {
   var newKey = firebase.database().ref('/chats/' + groupKey + '/comments/').push();
   newKey.set({
@@ -27,19 +29,34 @@ function eraseTable() {
 }
 
 function getMembers(){
-    var members = groupInfo["members"]
-    members = Object.values(members)
-    members = jQuery.map(Object.values(members), (memKey,index) =>{
-            return firebase.database().ref('/users/' + memKey ).once('value', function(snapshot) {
-                var myValue = snapshot.val()
-                if(myValue != null){
-                    groupMembers[memKey] = myValue
-                }
 
-            });
+    return firebase.database().ref('/groups/'+groupKey + '/members/').on('value', function(snap) {
+        var obj = snap.val()
+        if(obj != null){
+            groupMembers = {}
+            var members = Object.values(obj)
+            members = jQuery.map(Object.values(members), (memKey,index) =>{
+                return firebase.database().ref('/users/' + memKey ).once('value', function(snapshot) {
+                    var myValue = snapshot.val()
+                        if(myValue != null){
+                            groupMembers[memKey] = myValue
+                        }
 
+                    });
+
+                })
+
+            }
+        return Promise.all(members).then( () => {
+            initInfo()
+            finishSetup()
         })
-    Promise.all(members).then( () => initInfo())
+    })
+
+
+
+
+
 
 
 }
@@ -91,55 +108,82 @@ function addComment(comment){
     var isOwner = owner == userKey
     var bubbleClass = isOwner ? "leftBubble" : "rightBubble"
     var userClass = isOwner ? "owner" : "other"
+
+
     var giveInfoOnUsernameButton =$('<button/>').attr({
         class: "jumpToInfoUserButton "+ userClass,
 
-    }).html(groupMembers[owner]["username"])
+    }).html(groupMembers[owner].username)
     giveInfoOnUsernameButton.on("click" , function() {
         $('#showInfoButton').attr("hidden","true")
         $('#hideInfoButton').removeAttr("hidden")
         displayInfoForUser(groupMembers[owner])
         seeMembers()
-     }).css("background-color", color)
+     }).css("background-color", "#34B532")/* needs to be same color as body background */
+
 
 
     let commentText =$('<div/>').attr({
-        class: "row bubble "+bubbleClass ,
+        class: "row comment bubble "+bubbleClass ,
     }).html(comment["comment"])
 
     let entryRow =$('<div/>').attr({
         class: "row entry",
     })
 
+     let iconNameWrapper =$('<div/>').attr({
+        class: "col-2",
+    })
+
+      let iconRowWrapper =$('<div/>').attr({
+        class: "row",
+    })
+
+      let nameRowWrapper =$('<div/>').attr({
+        class: "row",
+    })
+
 
     let nameWrapper =$('<div/>').attr({
-        class: "col-2 nameDiv",
+        class: "col nameDiv",
 
     })
 
     let commentWrap =$('<div/>').attr({
-        class: "col-9 commentDiv",
+        class: "col-10 commentDiv",
     })
 
     let icon =$('<div/>').attr({
-        class: "col-1 iconDiv",
+        class: "col iconDiv",
 
-    }).addClass("fas fa-user").css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "green")
+    }).addClass("fas fa-user").css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "#34B532")/* needs to be same color as body background */
+
+    icon.on("click" , function() {
+        $('#showInfoButton').attr("hidden","true")
+        $('#hideInfoButton').removeAttr("hidden")
+        displayInfoForUser(groupMembers[owner])
+        seeMembers()
+     })
 
     var container = $(".chat")
 
     nameWrapper.append(giveInfoOnUsernameButton)
+    nameRowWrapper.append(nameWrapper)
+
+    iconRowWrapper.append(icon)
+
+    iconNameWrapper.append(iconRowWrapper)
+    iconNameWrapper.append(nameRowWrapper)
 
     commentWrap.append(commentText)
 
+
     if(isOwner){
-        entryRow.append(icon)
-        entryRow.append(nameWrapper)
+        entryRow.append(iconNameWrapper)
         entryRow.append(commentWrap)
     } else {
         entryRow.append(commentWrap)
-        entryRow.append(nameWrapper)
-        entryRow.append(icon)
+        entryRow.append(iconNameWrapper)
     }
 
 
@@ -230,7 +274,6 @@ function displayInfoForUser(member){
     addInfo("Eats:",table)
     var prefs = Object.entries(member["food"])
     const len = prefs.length
-    console.log()
     for(var i = 1; i<len;++i){
         if(prefs[i][1]){
             if(i == 1){
