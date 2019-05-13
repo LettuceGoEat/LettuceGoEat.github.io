@@ -162,7 +162,7 @@ function formatInfo(dinner) {
 
   $(".info3").html('<b>' + (dinner["time"] > 0 ? "Dinner" : "Lunch") + '</b>' + " on " + '<b>' + daysOfTheWeek[dinner["week"]] + "!'</b>'")
 
-  $(".info4").html('<b>' + dinner["groupsize"] + " people </b> coming ")
+  $(".info4").html('<b>' + (Object.keys(dinner.members).length) + " people </b> coming ")
 
   $(".info5").html("Location: " + '<b>' + dinner["mylocation"] + '</b>')
 
