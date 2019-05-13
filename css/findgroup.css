@@ -268,3 +268,8 @@ input:checked + .slider:before {
 	border-collapse : collapse;
 	border : 1px solid black;
 }
+
+#contentgreen{
+	padding-left : 2%;
+	background : #B5FD69;
+}

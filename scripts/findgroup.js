@@ -268,6 +268,13 @@ function seedetail(t) {
 		var c5 = ro5.insertCell(0)
 		var c6 = ro6.insertCell(0)
 		var c7 = ro7.insertCell(0)
+		c1.className='contentgreen'
+		c2.className='contentgreen'
+		c3.className='contentgreen'
+		c4.className='contentgreen'
+		c5.className='contentgreen'
+		c6.className='contentgreen'
+		c7.className='contentgreen'
 		var bbb = document.createElement('button')
 		bbb.innerHTML = "Join";
 		c7.appendChild(bbb)
