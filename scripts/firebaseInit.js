@@ -29,6 +29,10 @@ function animateCSS(element, animationName, callback) {
   el.on('animationend', handleAnimationEnd)
 }
 
+function hashString(s) {//not my function: https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
+  return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+}
+
 $(document).ready(function() {
 
   let viewheight = $(window).height();

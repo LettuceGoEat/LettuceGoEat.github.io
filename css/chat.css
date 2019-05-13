@@ -8,6 +8,7 @@ footer{
 }
 .chat{
   min-height: 70vh;
+
   height: 70vh;
   overflow-y: scroll;
   float:left;
@@ -74,6 +75,7 @@ footer{
   color: white;
   border: none;
   font-size: 2em;
+  font-weight: 900;
 }
 
 .membersButton{
@@ -90,12 +92,13 @@ footer{
    position: fixed;
   display: block;
   left: 70%;
-  background-color: grey;
   width: 30%;
   height: 50%;
   z-index: 2;
   cursor: pointer;
   float:right;
+  background-color: hsl(115, 14%, 82%, 1);
+  max-height: 50%;
 }
 
 .iconDiv{
@@ -156,5 +159,31 @@ footer{
   height:5vh;
 }
 .membersButton{
+  font-size: 5em;
+  left: 85%;
+  border-radius: 32px;
+}
 
+.nameButton{
+  font-size: 2.5em;
+  font-weight: 900;
+  min-width: 100%;
+  text-align: left;
+  border-radius: 12px;
+
+}
+
+.users{
+  margin-top: 5vh;
+  max-height: 10vh;
+  overflow-y: scroll;
+}
+
+.hello{
+   font-size: 2.5em;
+  font-weight: 900;
+  min-width: 100%;
+  text-align: left;
+  text-indent: 5%;
+  border-radius: 12px;
 }

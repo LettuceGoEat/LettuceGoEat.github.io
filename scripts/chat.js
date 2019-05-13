@@ -5,6 +5,8 @@ var groupKey
 var groupMembers = {}
 var groupInfo
 
+const NUMBER_COLORS = 25;
+
 function setup() {
 
     findAccount()
@@ -222,19 +224,25 @@ function bindEvents() {
 }
 
 function getColor(owner){
-    return (owner == userKey ? "purple" : "red")
+    var value = hashString(owner)%NUMBER_COLORS
+    value = value >= 0 ? value : value + NUMBER_COLORS
+    value = (value*359)/NUMBER_COLORS
+    var color = "hsl(" + value +", 70%, 41%)"
+    return color
 }
 
 function seeMembers(){
     let usersInfo = $('#usersInfo')
     usersInfo.removeAttr("hidden")
     usersInfo.css( { display: "block" } )
+
 }
 
 function noSeeMembers(){
     let usersInfo = $('#usersInfo')
     usersInfo.attr("hidden","true")
     usersInfo.css( { display: "none" } )
+
 
 }
 
@@ -251,8 +259,8 @@ function initInfo(){
             class: "col",
         })
         let name = $('<button/>').attr({
-            class: "nameButton",
-        }).html(member["username"])
+            class: "nameButton fas fa-question",
+        }).html(" " + member["username"])
         nameCol.append(name)
         nameRow.append(nameCol)
         users.append(nameRow)
@@ -269,33 +277,61 @@ function initInfo(){
 function displayInfoForUser(member){
     $(".hello").remove()
     var table = $('.info')
-
-    addInfo(member["username"], table)
-    addInfo("Eats:",table)
+    console.log("hey")
+    addInfo(member["username"] +  " eats:", table, null)
     var prefs = Object.entries(member["food"])
     const len = prefs.length
-    for(var i = 1; i<len;++i){
+    for(var i = 0; i<len;++i){
         if(prefs[i][1]){
-            if(i == 1){
-                addInfo("animal products", table)
+            var food = prefs[i][0]
+            if(food == "animalProducts"){
+                addInfo(" - animal products", table, "green")
             } else {
-                addInfo(prefs[i][0], table)
+                addInfo(" - " +food, table, "green")
+            }
+
+
+        }
+    }
+     console.log("ha")
+    addInfo(member["username"] +  " does not eat:", table, null)
+    for(var i = 0; i<len;++i){
+        if(!prefs[i][1]){
+            var food = prefs[i][0]
+            if(food == "animalProducts"){
+                addInfo(" - animal products", table, "red")
+            } else {
+                addInfo(" - " +food, table, "red")
             }
 
         }
     }
+     console.log("ho")
+
 
 
 
 }
 
-function addInfo(info,table){
-    let nameRow = $('<div/>').attr({
-        class: "row hello",
-        })
-    let nameCol = $('<div/>').attr({
-        class: "col",
-    }).html(info)
+function addInfo(info,table,color){
+    let nameRow
+    let nameCol
+    if(color == null){
+        nameRow = $('<div/>').attr({
+            class: "row hello",
+            })
+        nameCol = $('<div/>').attr({
+            class: "col",
+        }).html(info).css("color", "black" )
+    } else {
+        nameRow = $('<div/>').attr({
+            class: "row hello",
+            })
+        nameCol = $('<div/>').attr({
+            class: "col",
+        }).html(info).css("color", color)
+    }
+
     nameRow.append(nameCol)
     table.append(nameRow)
 }
