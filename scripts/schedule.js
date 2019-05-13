@@ -207,21 +207,21 @@ function displayDefaultDinnerInfo() {
     //check if we come from a join dinner
     var dinner
     if(urlParams.has('joined')){
-      $(".info1").html("Joined meal information:")
+
       var dinnerKey = urlParams.get('joined')
-      console.log("dinnerKey", dinnerKey);
-      dinner = dinnersMap[urlParams.get('joined')]
-      console.log("dinner", dinner);
-      console.log("dinnersMap", dinnersMap);
-      console.log("urlParams.get('joined')", urlParams.get('joined'));
+      dinner = dinnersMap[dinnerKey]
+      displayInfoForDinner(dinner)
+      $(".info1").html("Joined meal information:")
       $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).children("button").addClass("selected")
     } else {
-      $(".info1").html("Your next meal:")
+
       dinner = userDinners[0]
+      displayInfoForDinner(dinner)
+      $(".info1").html("Your next meal:")
       $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).children("button").addClass("selected")
     }
 
-    displayInfoForDinner(dinner)
+
 
   } else {
 
