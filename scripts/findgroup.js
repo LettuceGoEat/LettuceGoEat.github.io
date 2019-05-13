@@ -328,7 +328,7 @@ function seedetail(t) {
 				secondKey.set(datasnapshot.val())
 			})
 			newKey.set(user["key"]).then(function() {
-				window.location.href = "schedule.html"
+				window.location.href = "schedule.html" + "?joined=" + t.className
 			})
 		}
 	})

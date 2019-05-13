@@ -125,7 +125,7 @@ function setup() {
 					newKey.child('mylocation').set(mylocation.val())
 					newKey.child('groupsize').set(groupsize.val())
 					newKey.child('members').child('mem1').set(user["key"]).then(function() {
-						window.location.href = "schedule.html"
+						window.location.href = "schedule.html"+"?joined="+newKey.key
 					})
 				} else {
 					alert("you already have schedule in that time")

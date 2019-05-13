@@ -11,6 +11,8 @@ var userKey
 /* userDinners corresponds to the dinners of each day;
 format is [day,timeOfDay(lunch/dinner)] */
 var userDinners = []
+
+var dinnersMap = {}
 /* days of the week in order */
 var daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
@@ -18,6 +20,7 @@ var daysOfTheWeekSmall = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
 
 
 function setup() {
+  var urlParams = new URLSearchParams(window.location.search);
   $("#headerSchedule").addClass("selected")
   fillDatesInOrder()
   getUser()
@@ -37,9 +40,21 @@ function getDinners() {
     //not secure but this isn't the point of this project
     if (obj != null) {
       var keys = Object.keys(obj)
-      userDinners = Object.entries(obj).filter(elem => {
+      userDinners = Object(Object.entries(obj).filter(elem => {
         return Object.values(elem[1]["members"]).includes(userKey)
-      }).map(elem => {
+      }))
+
+      //
+      dinnersMap = userDinners
+      .filter(([k, v]) => {
+        return true;
+      })
+      .reduce((accum, [k, v]) => {
+        accum[k] = v;
+        return accum;
+      }, {});
+      //
+      userDinners = userDinners.map(elem => {
         dinner = elem[1]
         dinner["key"] = elem[0]
         return dinner
@@ -187,10 +202,27 @@ function fillDatesInOrder() {
 
 function displayDefaultDinnerInfo() {
   if (userDinners.length > 0) {
-    var dinner = userDinners[0]
-    $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).children("button").addClass("selected")
-    displayInfoForDinner(userDinners[0])
-    $(".info1").html("Your next meal:")
+    //get querry dinner
+    var urlParams = new URLSearchParams(window.location.search);
+    //check if we come from a join dinner
+    var dinner
+    if(urlParams.has('joined')){
+      $(".info1").html("Joined meal information:")
+      var dinnerKey = urlParams.get('joined')
+      console.log("dinnerKey", dinnerKey);
+      dinner = dinnersMap[urlParams.get('joined')]
+      console.log("dinner", dinner);
+      console.log("dinnersMap", dinnersMap);
+      console.log("urlParams.get('joined')", urlParams.get('joined'));
+      $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).children("button").addClass("selected")
+    } else {
+      $(".info1").html("Your next meal:")
+      dinner = userDinners[0]
+      $(days[dinner["time"]][getIndexFromDay(dinner["week"])]).children("button").addClass("selected")
+    }
+
+    displayInfoForDinner(dinner)
+
   } else {
 
      $(".info1").html("No dinner scheduled. ")
