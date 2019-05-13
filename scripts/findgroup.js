@@ -15,6 +15,9 @@ function setup() {
 		$('input[type=checkbox]').each(function(k, v) {
 			$(this).prop('checked', acc.user.food[v.name])
 		})
+		if(!Object.values(Cookies.getJSON("account")["user"].food).includes(false)){
+			$('input[name=all]').prop('checked', true)
+		}
 		var selected = {}
 		$('input[type=checkbox]').each(function(k, v) {
 			selected[v.name] = $(this).prop('checked')
