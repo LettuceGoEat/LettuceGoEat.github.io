@@ -113,7 +113,7 @@ footer{
 }
 
 .nameDiv{
-  background-color: #34B532; /* needs to be same as body background */
+  background-color: hsl(105, 40%, 67%); /* needs to be same as body background */
 }
 
 .comment{

@@ -2,8 +2,10 @@ html, body {
 }
 
 body{
-    background-color: #34B532;
+    background-color: hsl(105, 40%, 67%);
 }
+
+
 
 .row.headerRow {
   height: 10vh;
@@ -12,7 +14,7 @@ body{
 header {
   width: 100%;
   vertical-align: middle;
-  background-color: #50D84D;
+  background-color: hsl(105, 60%, 67%);
   padding: 50px;
 }
 
