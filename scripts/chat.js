@@ -4,6 +4,7 @@ var userKey
 var groupKey
 var groupMembers = {}
 var groupInfo
+var groupCreator
 
 const NUMBER_COLORS = 25;
 
@@ -88,6 +89,7 @@ function findAccount(){
     userKey = account["key"]
     groupInfo = account["groupChat"]
     groupKey = groupInfo["key"]
+    groupCreator = groupInfo["members"]["mem1"]
 }
 
 /*
@@ -108,9 +110,9 @@ function addComment(comment){
     var color = getColor(owner)
     //create username
     var isOwner = owner == userKey
-    var bubbleClass = isOwner ? "leftBubble" : "rightBubble"
-    var userClass = isOwner ? "owner" : "other"
-
+    var bubbleClass = !isOwner ? "leftBubble" : "rightBubble"
+    var userClass = !isOwner ? "owner" : "other"
+    var isChatCreator = owner == groupCreator
 
     var giveInfoOnUsernameButton =$('<button/>').attr({
         class: "jumpToInfoUserButton "+ userClass,
@@ -154,11 +156,11 @@ function addComment(comment){
     let commentWrap =$('<div/>').attr({
         class: "col-10 commentDiv",
     })
-
+    var faClass = isChatCreator ? "fa-crown" : "fa-user"
     let icon =$('<div/>').attr({
         class: "col iconDiv",
 
-    }).addClass("fas fa-user").css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "#34B532")/* needs to be same color as body background */
+    }).addClass("fas "+faClass).css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "#34B532")/* needs to be same color as body background */
 
     icon.on("click" , function() {
         $('#showInfoButton').attr("hidden","true")
@@ -180,7 +182,7 @@ function addComment(comment){
     commentWrap.append(commentText)
 
 
-    if(isOwner){
+    if(!isOwner){
         entryRow.append(iconNameWrapper)
         entryRow.append(commentWrap)
     } else {
@@ -277,7 +279,6 @@ function initInfo(){
 function displayInfoForUser(member){
     $(".hello").remove()
     var table = $('.info')
-    console.log("hey")
     addInfo(member["username"] +  " eats:", table, null)
     var prefs = Object.entries(member["food"])
     const len = prefs.length
