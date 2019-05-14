@@ -293,7 +293,6 @@ function displayInfoForUser(member){
 
         }
     }
-     console.log("ha")
     addInfo(member["username"] +  " does not eat:", table, null)
     for(var i = 0; i<len;++i){
         if(!prefs[i][1]){
@@ -306,7 +305,6 @@ function displayInfoForUser(member){
 
         }
     }
-     console.log("ho")
 
 
 
