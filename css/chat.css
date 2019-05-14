@@ -92,8 +92,8 @@ footer{
 #usersInfo {
    position: fixed;
   display: block;
-  left: 70%;
-  width: 30%;
+  left: 60%;
+  width: 40%;
   height: 70%;
   z-index: 2;
   cursor: pointer;
