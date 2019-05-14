@@ -6,7 +6,7 @@ var groupMembers = {}
 var groupInfo
 var groupCreator
 
-const NUMBER_COLORS = 25;
+const NUMBER_COLORS = 10;
 
 function setup() {
 
