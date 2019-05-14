@@ -216,7 +216,9 @@ input:checked + .slider:before {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-
+.joinbutton{ /* joinbotton's position */
+	float : right;
+}
 
 #tableappend {
 	overflow-y: scroll;
@@ -224,7 +226,7 @@ input:checked + .slider:before {
 }
 
 #content{
-	width: 90%;
+	width: 97%;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	margin-left: auto;
@@ -242,34 +244,35 @@ input:checked + .slider:before {
 	border-bottom : 2px solid black;
 }
 #contentintext{	/* Title or types */
-	padding-left: 2%;
+	padding-left: 1%;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentmeal{	/* Lunch/Dinner	*/
-	padding-left: 2%;
-	width : 25%;
+	padding-left: 1%;
+	width : 23%;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentpeople{	/* x/y*/
 	text-align: center;
-	width : 15%;
+	width : 12%;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentmore{	/* ... */
-	width : 10%;
+	width : 7%;
 	text-align: center;
 	background : #B5FD69;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 
-.contentgreen{
+.contentgreen{  /* see detail's contesnts green*/
 	padding-left : 2%;
+	padding-right : 2%;
 	background : #B5FD69;
 }

@@ -90,7 +90,7 @@ function showthedata(selected, wee, din) {
 				}
 				if (checkinclude == 1) {
 
-				} else if (checknumbermember >= x.groupsize.toInt) {
+				} else if (checknumbermember >= Number(x.groupsize)) {
 
 				} else if (din == "lunch" && x.time != 0) {
 
@@ -280,6 +280,7 @@ function seedetail(t) {
 		c7.className='contentgreen'
 		var bbb = document.createElement('button')
 		bbb.innerHTML = "Join";
+		bbb.className = 'joinbutton'
 		c7.appendChild(bbb)
 		c1.innerHTML = x.title;
 		c2.innerHTML = " "
