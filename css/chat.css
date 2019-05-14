@@ -148,7 +148,7 @@ footer{
 .inputContainer{
   float: left;
   width: 100%;
-  height:5vh;
+  height:7vh;
   min-width: 100%;
 
   overflow-y: scroll;
@@ -156,7 +156,7 @@ footer{
 }
 .rowInfo{
   width: 100%;
-  height:5vh;
+  height:7vh;
 }
 .membersButton{
   font-size: 5em;
