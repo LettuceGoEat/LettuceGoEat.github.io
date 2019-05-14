@@ -123,7 +123,7 @@ function addComment(comment){
         $('#hideInfoButton').removeAttr("hidden")
         displayInfoForUser(groupMembers[owner])
         seeMembers()
-     }).css("background-color", "#34B532")/* needs to be same color as body background */
+     }).css("background-color", "hsl(105, 40%, 67%)")/* needs to be same color as body background */
 
 
 
@@ -160,7 +160,7 @@ function addComment(comment){
     let icon =$('<div/>').attr({
         class: "col iconDiv",
 
-    }).addClass("fas "+faClass).css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "#34B532")/* needs to be same color as body background */
+    }).addClass("fas "+faClass).css("background-color", getColor(owner)).css("background-blend-mode", "multiply").css("color", getColor(owner)).css("background-color", "hsl(105, 40%, 67%)")/* needs to be same color as body background */
 
     icon.on("click" , function() {
         $('#showInfoButton').attr("hidden","true")
