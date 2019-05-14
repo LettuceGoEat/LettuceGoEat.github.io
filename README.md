@@ -27,6 +27,11 @@ The create group page let's the user create his own dinner with specific criteri
 <b>chat.js</b>
 Any chat's dinner can be accessed from the schedule while viewing the corresponding dinner. The chat let's the user speak with any group members and share information. He can also see the information of his group members.
 
+<b>firebaseInit.js</b>
+This is the base js for all pages. It initialises the firebase, cookies and also creates the header which contains three icons. These icons correspond to the three main pages: schedule, joingroup and profile. The user can navigate between them by clicking on the corresponding icon.
+
+
+
 
 
 
