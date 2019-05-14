@@ -238,35 +238,35 @@ input:checked + .slider:before {
 
 }
 #contenttitle{	/* Day */
-	background : #58D536;
+	background : #A1E646;
 	border-collapse : collapse;
 	border : 1px solid black;
 	border-bottom : 2px solid black;
 }
 #contentintext{	/* Title or types */
 	padding-left: 1%;
-	background : #B5FD69;
+	background : #88E86D;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentmeal{	/* Lunch/Dinner	*/
 	padding-left: 1%;
 	width : 23%;
-	background : #B5FD69;
+	background : #88E86D;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentpeople{	/* x/y*/
 	text-align: center;
 	width : 12%;
-	background : #B5FD69;
+	background : #88E86D;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
 #contentmore{	/* ... */
 	width : 7%;
 	text-align: center;
-	background : #B5FD69;
+	background : #88E86D;
 	border-collapse : collapse;
 	border : 1px solid black;
 }
@@ -274,5 +274,5 @@ input:checked + .slider:before {
 .contentgreen{  /* see detail's contesnts green*/
 	padding-left : 2%;
 	padding-right : 2%;
-	background : #B5FD69;
+	background : #88E86D;
 }
