@@ -81,6 +81,85 @@
 			<input class="interface" type="text" id='location' placeholder="Where?">
 		</div>
 		<div class="row" style="height:3vh"></div>
+
+		<div class="row" style="height:5vh">
+			<button id="toggleFilter" onclick="toggleFilter()">Filter..</button>
+		</div>
+
+		<div class="row" style="height:2vh"></div>
+		<span id="filter">
+			<div class="row triple justify-content-center">
+				<div class="col-6">
+					<div class="row double justify-content-center">
+						<div class="col-8 label2">
+							Fish
+						</div>
+						<div class="col-4 align-self-center">
+							<label class="switch">
+								<input type="checkbox" name = "fish" id="chk_info6">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class='row' style="height:1vh"></div>
+					<div class="row double justify-content-center">
+						<div class="col-8 label2">
+							Dairy
+						</div>
+						<div class="col-4 align-self-center">
+							<label class="switch">
+								<input type="checkbox" name = "dairy" id="chk_info4">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class='row' style="height:1vh"></div>
+					<div class="row double justify-content-center">
+						<div class="col-8 label2">
+							Egg
+						</div>
+						<div class="col-4 align-self-center">
+							<label class="switch">
+								<input type="checkbox" name = "egg" id="chk_info5">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-4 label3">
+					Animal-derived products
+				</div>
+				<div class="col-2 align-self-center">
+					<label class="switch">
+						<input type="checkbox" name = "animalProducts" id="chk_info2">
+						<span class="slider round"></span>
+					</label>
+				</div>
+			</div>
+			<div class='row' style="height:1vh"></div>
+			<div class="row double justify-content-center">
+				<div class="col-4 label3">
+					Chicken
+				</div>
+				<div class="col-2 align-self-center">
+					<label class="switch">
+						<input type="checkbox" name = "chicken" id="chk_info3">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="col-4 label3">
+					All
+				</div>
+				<div class="col-2 align-self-center">
+					<label class="switch">
+						<input type="checkbox" name = "all" onchange="selectAll(this.checked)" id="chk_info1">
+						<span class="slider round"></span>
+					</label>
+				</div>
+			</div>
+		</span>
+		<div class='row' style="height:2vh"></div>
+
 		<div class="row">
 			<div class="col">
 				Group Size:
