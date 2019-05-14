@@ -130,7 +130,6 @@ function setup() {
 						window.location.href = "schedule.html"+"?joined="+newKey.key
 					})
 				} else {
-					console.log("a");
 					var al =document.getElementById('al')
 					var al2 = document.getElementById('al2')
 					al.style.display='none'
