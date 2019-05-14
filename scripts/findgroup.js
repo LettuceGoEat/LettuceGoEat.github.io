@@ -312,7 +312,7 @@ function seedetail(t) {
 				c5.innerHTML += " None"
 			}
 		}
-		c6.innerHTML = "loaction : " + x.mylocation
+		c6.innerHTML = "location : " + x.mylocation
 		t.deleteRow(1)
 		t.deleteRow(1)
 		t.addEventListener("click", function() {

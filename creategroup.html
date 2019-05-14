@@ -89,7 +89,18 @@
 				<input class="interface"  type="number" id='groupsize' step="1" min="2" max="99">
 			</div>
 		</div>
-		<div class="row" style="height:3vh"></div>
+		<div class= "row">
+			<div class="col" id='alertspace'>
+			</div>
+		</div>
+
+		<div class="alert">
+			 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			 You already have schedule in that time!
+		</div>
+
+
+
 		<div class="row justify-content-end">
 			<button id='next'>Create</button>
 		</div>

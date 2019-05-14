@@ -128,10 +128,16 @@ function setup() {
 						window.location.href = "schedule.html"+"?joined="+newKey.key
 					})
 				} else {
-					alert("you already have schedule in that time")
+					var al =document.getElementsByClassName('closebtn')
+					var al2 = document.getElementsByClassName('alert')
+					al2.style.display='none'
+					al2.onclick = function(){
+						al.style.display='none'
+					}
+					al2.style.display = 'initial'
 				}
 			})
 		}
 	})
-
 }
+
