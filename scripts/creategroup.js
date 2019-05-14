@@ -1,6 +1,33 @@
 // JavaScript source code
 
 function setup() {
+	var acc = Cookies.getJSON('account')
+	var selected = {}
+	if (acc != null && acc.user != null && acc.user.food != null) {
+		$('input[type=checkbox]').each(function(k, v) {
+			$(this).prop('checked', acc.user.food[v.name])
+		})
+		if(!Object.values(Cookies.getJSON("account")["user"].food).includes(false)){
+			$('input[name=all]').prop('checked', true)
+		}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+		});
+	}
+
+	$("input[type=checkbox][name!=all]").on("click", (e) => {
+		var val = $(e.target).prop('checked')
+		if (val == false) {
+			$("input[name=all]").prop('checked', false)
+		}
+		$('input[type=checkbox]').each(function(k, v) {
+			selected[v.name] = $(this).prop('checked')
+		});
+	})
+	console.log(selected)
+
+	var al =document.getElementById('al')
+	al.style.display='none'
 	$("#headerFindGroup").addClass('selected')
 
 
@@ -119,19 +146,48 @@ function setup() {
 						newKey.child('order').set(date.getTime() - date.getTime() % (day) + day + day * ((week - date.getDay() + 7) % 7) + 1)
 						secondKey.set(date.getTime() - date.getTime() % (day) + day + day * ((week - date.getDay() + 7) % 7) + 1)
 					}
-					firebase.database().ref('/users/' + user["key"] + '/food').once("value", function(datasnapshot) {
-						newKey.child('food').set(datasnapshot.val())
-					})
+					newKey.child('food').set(selected)
 					newKey.child('mylocation').set(mylocation.val())
 					newKey.child('groupsize').set(groupsize.val())
 					newKey.child('members').child('mem1').set(user["key"]).then(function() {
 						window.location.href = "schedule.html"+"?joined="+newKey.key
 					})
 				} else {
-					alert("you already have schedule in that time")
+					var al =document.getElementById('al')
+					var al2 = document.getElementById('al2')
+					al.style.display='none'
+					al2.onclick = function(){
+						al.style.display='none'
+					}
+					al.style.display = 'block'
 				}
 			})
 		}
 	})
-
 }
+
+function toggleFilter() {
+
+	var display = $("#filter").css('display')
+
+	if (display == "block") {
+		$("#filter").css('display', 'none')
+		$("#tableappend").css('height', '55vh')
+	} else if (display == "none") {
+		$("#filter").css('display', 'block')
+		$("#tableappend").css('height', '36vh')
+	} else {
+		console.log("ERR: toggleFilter")
+	}
+}
+
+
+function selectAll(val) {
+	$("input[type=checkbox]").prop('checked', val)
+	var selected = {}
+	$('input[type=checkbox]').each(function(k, v) {
+		selected[v.name] = $(this).prop('checked')
+	});
+	
+}
+

@@ -72,9 +72,11 @@ function getDinners() {
 }
 
 function removeFromDatabase(oldDinners) {
+  /*
   for (var i = 0; i < oldDinners.length; ++i) {
     firebase.database().ref('/groups/' + oldDinners[i]).remove()
   }
+  */
 }
 
 function displayInfoForDinner(dinner) {
