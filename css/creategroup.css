@@ -133,6 +133,7 @@ button.selected {
 
 #toggleFilter {
 	font-size: 1.2em;
+	width : 80%;
 }
 
 .label {

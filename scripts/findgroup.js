@@ -420,10 +420,10 @@ function toggleFilter() {
 
 	if (display == "block") {
 		$("#filter").css('display', 'none')
-		$("#tableappend").css('height', '55vh')
+		$("#tableappend").css('height', '45vh')
 	} else if (display == "none") {
 		$("#filter").css('display', 'block')
-		$("#tableappend").css('height', '36vh')
+		$("#tableappend").css('height', '26vh')
 	} else {
 		console.log("ERR: toggleFilter")
 	}

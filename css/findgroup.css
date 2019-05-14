@@ -222,7 +222,7 @@ input:checked + .slider:before {
 
 #tableappend {
 	overflow-y: scroll;
-	height: 55vh;
+	height: 45vh;
 }
 
 #content{
