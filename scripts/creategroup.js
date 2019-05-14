@@ -1,6 +1,8 @@
 // JavaScript source code
 
 function setup() {
+	var al =document.getElementById('al')
+	al.style.display='none'
 	$("#headerFindGroup").addClass('selected')
 
 
@@ -128,13 +130,14 @@ function setup() {
 						window.location.href = "schedule.html"+"?joined="+newKey.key
 					})
 				} else {
-					var al =document.getElementsByClassName('closebtn')
-					var al2 = document.getElementsByClassName('alert')
-					al2.style.display='none'
+					console.log("a");
+					var al =document.getElementById('al')
+					var al2 = document.getElementById('al2')
+					al.style.display='none'
 					al2.onclick = function(){
 						al.style.display='none'
 					}
-					al2.style.display = 'initial'
+					al.style.display = 'block'
 				}
 			})
 		}

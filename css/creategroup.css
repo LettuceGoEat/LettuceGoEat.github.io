@@ -90,21 +90,27 @@ button.selected {
 	color : black;
 }
 
-.alert {
-  padding: 20px;
+#al {
+  margin-top : 2%;
+  font-size : 1.4em;
   background-color: #f44336;
+  padding-left : 2%;
   color: white;
 }
 
-.closebtn {
+#al2 {
   margin-left: 15px;
   color: white;
   font-weight: bold;
   float: right;
-  font-size: 22px;
+  font-size: 1.6em;
   line-height: 20px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+#margincreate{
+	margin-top : 2%;
 }
 
 
