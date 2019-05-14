@@ -30,6 +30,7 @@ Any chat's dinner can be accessed from the schedule while viewing the correspond
 <b>firebaseInit.js</b>
 This is the base js for all pages. It initialises the firebase, cookies and also creates the header which contains three icons. These icons correspond to the three main pages: schedule, joingroup and profile. The user can navigate between them by clicking on the corresponding icon.
 
+![](images/headerIcons.png)
 
 
 
