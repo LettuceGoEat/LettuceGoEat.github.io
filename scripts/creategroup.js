@@ -112,7 +112,7 @@ function setup() {
 			animateCSS('.time', 'shake')
 		} else if (mylocation.val() == "") {
 			animateCSS('#location', 'shake')
-		} else if (groupsize.val() == "") {
+		} else if (groupsize.val() == "" || Number(groupsize.val())<2 || Number(groupsize.val())>99) {
 			animateCSS('#groupsize', 'shake')
 		} else {
 			var user = Cookies.getJSON("account")
